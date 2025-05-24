@@ -3,12 +3,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
-    private float damage;
+   public float speed = 10f;
+    public float Damage { get; private set; }
+
+    void Start()
+    {
+        Destroy(gameObject, 3f);
+        var bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        if (bullets.Length >= 10)
+            Destroy(bullets[0]);
+    }
 
     public void Init(float dmg)
     {
-        damage = dmg;
+        Damage = dmg;
     }
 
     void Update()
@@ -18,10 +26,13 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        var target = other.GetComponent<PlayerStats>();
-        if (target != null)
+        Debug.Log("Bullet colidiu com um objeto! " + other.gameObject.name);
+        
+        if (other.CompareTag("Enemy"))
         {
-            target.TakeDamage(damage);
+            var e = other.GetComponent<Enemy>();
+            if (e != null)
+                e.TakeDamage(Damage);
         }
         Destroy(gameObject);
     }

@@ -2,20 +2,24 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(PlayerStats), typeof(PlayerInput))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerStats))]
+[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float dashSpeed = 12f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
-
+    public Animator animator;
     public Transform firePoint;
     public GameObject projectilePrefab;
 
     private Rigidbody2D rb;
     private PlayerStats stats;
     private PlayerInput input;
+    private bool isShooting;
 
     private Vector2 moveInput;
     private Vector2 dashDirection;
@@ -26,9 +30,10 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        stats = GetComponent<PlayerStats>();
-        input = GetComponent<PlayerInput>();
+         rb        = GetComponent<Rigidbody2D>();
+        stats     = GetComponent<PlayerStats>();
+        input     = GetComponent<PlayerInput>();
+        animator  = GetComponent<Animator>();
     }
 
     void OnEnable()
@@ -49,11 +54,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector2 mpos = Mouse.current.position.ReadValue();
-        Vector3 world = Camera.main.ScreenToWorldPoint(mpos);
-        Vector2 dir = (world - transform.position).normalized;
-        rb.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
-
+        AimAtMouse();
+        UpdateAnimation();
         if (fireTimer > 0f) fireTimer -= Time.deltaTime;
     }
 
@@ -63,15 +65,30 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = moveInput * moveSpeed;
     }
 
+    void AimAtMouse()
+    {
+        Vector2 mouseScreen = Mouse.current.position.ReadValue();
+        Vector3 world      = Camera.main.ScreenToWorldPoint(mouseScreen);
+        Vector2 aimDir     = (world - transform.position).normalized;
+
+        firePoint.up = aimDir;
+    }
     void Shoot()
     {
         if (!isBuilding)
         {
-            if (fireTimer > 0) return;
-            GameObject p = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-            if (p.TryGetComponent<Bullet>(out var b)) b.Init(stats.Damage.Value);
+            if (fireTimer > 0f) return;
             fireTimer = 1f / stats.AttackSpeed.Value;
+            animator.SetBool("Attack", true);
         }
+
+    }
+    public void SpawnProjectile()
+    {
+        var p = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        if (p.TryGetComponent<Bullet>(out var b))
+            b.Init(stats.Damage.Value);
+        animator.SetBool("Attack", false);
     }
 
     void TryDash()
@@ -92,5 +109,37 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+     void UpdateAnimation()
+    {
+        if (moveInput != Vector2.zero && animator.GetBool("Attack") == false)
+        {
+            if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+            {
+                if (moveInput.x > 0) animator.Play("WalkRight");
+                else animator.Play("Walkingleft");
+            }
+            else
+            {
+                if (moveInput.y > 0) animator.Play("WalkUp");
+                else animator.Play("WalkDown");
+            }
+        }
+        else if(animator.GetBool("Attack") == false)
+        {
+            var mpos = Mouse.current.position.ReadValue();
+            var world = Camera.main.ScreenToWorldPoint(mpos);
+            var aimDir = world - transform.position;
+            if (Mathf.Abs(aimDir.x) > Mathf.Abs(aimDir.y))
+            {
+                if (aimDir.x > 0) animator.Play("IdleRight");
+                else animator.Play("IdleLeft");
+            }
+            else
+            {
+                if (aimDir.y > 0) animator.Play("IdleUp");
+                else animator.Play("IdleDown");
+            }
+        }
     }
 }
