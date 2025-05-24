@@ -11,6 +11,9 @@ public class TowerBuilder : MonoBehaviour
     public BuildType selectedBuildType;
     public int buildIndex;
     public int cash;
+    public float tunrPerClick = 22.5f;
+    public float currentRotation;
+
     private Dictionary<BuildType, List<Build>> enabledBuilds;
     private Dictionary<Vector2Int, GameObject> notEmptySpaces = new();
     private PlayerInput input;
@@ -43,6 +46,7 @@ public class TowerBuilder : MonoBehaviour
         input.actions["Next"].performed += _ => NextBuilding();
         input.actions["Jump"].performed += _ => ChangeBuildMode();
         input.actions["Fire"].performed += _ => TryBuild();
+        input.actions["Rotate"].performed += _ => Rotate();
     }
 
     void OnDisable()
@@ -51,6 +55,7 @@ public class TowerBuilder : MonoBehaviour
         input.actions["Next"].performed -= _ => NextBuilding();
         input.actions["Jump"].performed -= _ => ChangeBuildMode();
         input.actions["Fire"].performed -= _ => TryBuild();
+        input.actions["Rotate"].performed -= _ => Rotate();
     }
 
     void Update()
@@ -61,6 +66,11 @@ public class TowerBuilder : MonoBehaviour
             currentGhost = null;   
     }
 
+    void Rotate()
+    {
+        currentRotation += tunrPerClick;
+    }
+
     void ChangeBuildMode()
     {
         playerController.isBuilding = !playerController.isBuilding;
@@ -69,7 +79,7 @@ public class TowerBuilder : MonoBehaviour
             if (currentGhost != null)
                 Destroy(currentGhost);
 
-            currentGhost = CurrentBuild.CreateGhostInstance();
+            currentGhost = CurrentBuild.CreateGhostInstance(0f);
         }
         else if (currentGhost != null)
             Destroy(currentGhost);
@@ -80,7 +90,6 @@ public class TowerBuilder : MonoBehaviour
         int count = enabledBuilds[selectedBuildType].Count;
         int newIndex = (buildIndex - 1 + count) % count;
         SelectBuild(newIndex);
-        SelectBuild(buildIndex - 1);
     }
 
     void NextBuilding()
@@ -88,7 +97,6 @@ public class TowerBuilder : MonoBehaviour
         int count = enabledBuilds[selectedBuildType].Count;
         int newIndex = (buildIndex + 1) % count;
         SelectBuild(newIndex);
-        SelectBuild(buildIndex + 1);
     }
 
     void SelectBuild(int index)
@@ -101,10 +109,7 @@ public class TowerBuilder : MonoBehaviour
                 Destroy(currentGhost);
             
             if (playerController.isBuilding)
-                currentGhost = CurrentBuild.CreateGhostInstance();
-
-            if (playerController.isBuilding)
-                currentGhost = Instantiate(enabledBuilds[selectedBuildType][buildIndex].CreateGhost());
+                currentGhost = CurrentBuild.CreateGhostInstance(0f);
         }
     }
 
@@ -115,12 +120,12 @@ public class TowerBuilder : MonoBehaviour
 
         Vector2Int gridPos = World2Grid(mousePos);
         Vector3 ghostPos = Grid2World(gridPos);
-        Vector2Int gridPos = World2Grid(mousePos);
-        Vector3 ghostPos = Grid2World(gridPos);
-        if (playerController.isBuilding && currentGhost == null)
-            SelectBuild(buildIndex);
 
         currentGhost.transform.position = ghostPos;
+        if (CurrentBuild.canRotate)
+            currentGhost.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
+        else
+            currentGhost.transform.rotation = Quaternion.identity;
     }
 
     Vector2Int World2Grid(Vector3 worldPos)
@@ -137,7 +142,6 @@ public class TowerBuilder : MonoBehaviour
     void TryBuild()
     {
         if (playerController.isBuilding && cash >= CurrentBuild.cost)
-        if (playerController.isBuilding)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mousePos.z = 0;
@@ -147,8 +151,8 @@ public class TowerBuilder : MonoBehaviour
 
             Vector3 finalPosition = Grid2World(gridPos);
             cash -= CurrentBuild.cost;
-            GameObject newTower = CurrentBuild.BuildIn(finalPosition);
-            GameObject newTower = Instantiate(enabledBuilds[selectedBuildType][buildIndex].prefab, finalPosition, Quaternion.identity);
+            float buildRotation = CurrentBuild.canRotate ? currentRotation : 0f;
+            GameObject newTower = CurrentBuild.BuildIn(finalPosition, buildRotation);
             notEmptySpaces[gridPos] = newTower;
         }
     }
