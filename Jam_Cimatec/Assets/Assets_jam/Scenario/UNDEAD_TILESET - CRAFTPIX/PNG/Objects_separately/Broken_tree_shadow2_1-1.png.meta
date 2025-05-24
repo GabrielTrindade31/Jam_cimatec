@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Broken_tree_shadow2_1-1_0: 6279644102087262616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

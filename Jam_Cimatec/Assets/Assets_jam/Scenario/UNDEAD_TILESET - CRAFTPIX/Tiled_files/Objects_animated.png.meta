@@ -1109,7 +1109,47 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Objects_animated_0: 8726275692196442630
+      Objects_animated_1: 7708064265960871337
+      Objects_animated_10: -6204067360923783042
+      Objects_animated_11: -2128483100507869848
+      Objects_animated_12: -1518191043683037611
+      Objects_animated_13: 5997954390424600649
+      Objects_animated_14: -8275466274589725983
+      Objects_animated_15: -7237006539321114696
+      Objects_animated_16: 3244073657413341987
+      Objects_animated_17: 8279875035719045230
+      Objects_animated_18: 2044727635762967623
+      Objects_animated_19: -3392322549270544496
+      Objects_animated_2: -7295698171081755538
+      Objects_animated_20: -2740359309557259092
+      Objects_animated_21: -6872868596943818879
+      Objects_animated_22: -277118339149077860
+      Objects_animated_23: -46982025524860329
+      Objects_animated_24: 5979602011750743207
+      Objects_animated_25: 7740807376969835358
+      Objects_animated_26: 1888539747811366089
+      Objects_animated_27: -414595773857130951
+      Objects_animated_28: -7446728258718722008
+      Objects_animated_29: 5892828362378164678
+      Objects_animated_3: -4829206354574018721
+      Objects_animated_30: -8993074244034337681
+      Objects_animated_31: -3092883863170002129
+      Objects_animated_32: -4727626936503492988
+      Objects_animated_33: -2446842401876714213
+      Objects_animated_34: 5020425874840794447
+      Objects_animated_35: -2102681105494370909
+      Objects_animated_36: -7923196687558589566
+      Objects_animated_37: -4226302607568792593
+      Objects_animated_38: -925627514888125167
+      Objects_animated_39: 1561934807650019981
+      Objects_animated_4: -3224590690148084625
+      Objects_animated_5: -7745690335042721992
+      Objects_animated_6: -7550276479532428092
+      Objects_animated_7: -5458780232196519500
+      Objects_animated_8: 5365972971720783740
+      Objects_animated_9: 6331987490262126188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

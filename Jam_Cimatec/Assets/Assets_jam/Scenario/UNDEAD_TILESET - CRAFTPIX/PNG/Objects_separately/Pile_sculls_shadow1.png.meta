@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pile_sculls_shadow1_0: -29691622873437011
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

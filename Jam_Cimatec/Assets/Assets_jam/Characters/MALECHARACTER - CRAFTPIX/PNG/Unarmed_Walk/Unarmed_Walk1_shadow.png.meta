@@ -709,7 +709,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Unarmed_Walk1_shadow_0: 109257766443797069
+      Unarmed_Walk1_shadow_1: -2160773901570327326
+      Unarmed_Walk1_shadow_10: 3147905036153447009
+      Unarmed_Walk1_shadow_11: -8783564639338172489
+      Unarmed_Walk1_shadow_12: -705233928098321706
+      Unarmed_Walk1_shadow_13: -4509400784372868307
+      Unarmed_Walk1_shadow_14: -7628098874764090523
+      Unarmed_Walk1_shadow_15: 5402073883616975488
+      Unarmed_Walk1_shadow_16: 367848140021600775
+      Unarmed_Walk1_shadow_17: -6026788202041231643
+      Unarmed_Walk1_shadow_18: 7019451190575439272
+      Unarmed_Walk1_shadow_19: 5858479698865656536
+      Unarmed_Walk1_shadow_2: -201243419942179160
+      Unarmed_Walk1_shadow_20: 3085216017118274012
+      Unarmed_Walk1_shadow_21: -6064133568208071163
+      Unarmed_Walk1_shadow_22: -8033069420552789845
+      Unarmed_Walk1_shadow_23: -2719410093701407523
+      Unarmed_Walk1_shadow_3: -2259183426085284162
+      Unarmed_Walk1_shadow_4: -1596176493749833995
+      Unarmed_Walk1_shadow_5: -7308043123852348706
+      Unarmed_Walk1_shadow_6: -5737948406836559912
+      Unarmed_Walk1_shadow_7: -4882315570781067435
+      Unarmed_Walk1_shadow_8: 1044087488577237382
+      Unarmed_Walk1_shadow_9: 3249324527398205240
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

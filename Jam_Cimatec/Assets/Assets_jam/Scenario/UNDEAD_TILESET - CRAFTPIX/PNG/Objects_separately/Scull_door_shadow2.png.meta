@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scull_door_shadow2_0: 8804366416661236113
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
