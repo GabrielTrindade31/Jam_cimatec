@@ -509,7 +509,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      orc1_idle_shadow_0: -7263550579062501888
+      orc1_idle_shadow_1: -5233721597073789007
+      orc1_idle_shadow_10: -2608141710079663271
+      orc1_idle_shadow_11: 2224697389903400058
+      orc1_idle_shadow_12: 6102717232448768892
+      orc1_idle_shadow_13: -9115642633683175097
+      orc1_idle_shadow_14: 4017786502467208491
+      orc1_idle_shadow_15: 1688509942210160903
+      orc1_idle_shadow_2: -2468718903117666206
+      orc1_idle_shadow_3: 9213162127876112740
+      orc1_idle_shadow_4: -6991567723928406124
+      orc1_idle_shadow_5: 7996293378892792066
+      orc1_idle_shadow_6: -3774330387655032693
+      orc1_idle_shadow_7: -3342513537775121499
+      orc1_idle_shadow_8: -2006782883843737308
+      orc1_idle_shadow_9: -6358892042089281091
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

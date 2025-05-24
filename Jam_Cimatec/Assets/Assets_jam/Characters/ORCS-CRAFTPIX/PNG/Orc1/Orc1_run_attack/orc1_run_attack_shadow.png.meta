@@ -909,7 +909,39 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      orc1_run_attack_shadow_0: 8617792148822955238
+      orc1_run_attack_shadow_1: -5520157139491490598
+      orc1_run_attack_shadow_10: -3696433284658976531
+      orc1_run_attack_shadow_11: -6705813748912517287
+      orc1_run_attack_shadow_12: 6321557276252422858
+      orc1_run_attack_shadow_13: 3506299806486267575
+      orc1_run_attack_shadow_14: 1385393178023540954
+      orc1_run_attack_shadow_15: 8191204520253747449
+      orc1_run_attack_shadow_16: 7532439865583421759
+      orc1_run_attack_shadow_17: 5086157684769174924
+      orc1_run_attack_shadow_18: 3130560700636412419
+      orc1_run_attack_shadow_19: 5529917289685205449
+      orc1_run_attack_shadow_2: 5617726961963307573
+      orc1_run_attack_shadow_20: -1749718621014861305
+      orc1_run_attack_shadow_21: -3432847208540947982
+      orc1_run_attack_shadow_22: 6839696370371906621
+      orc1_run_attack_shadow_23: -8613714801550459710
+      orc1_run_attack_shadow_24: -1568621372917526193
+      orc1_run_attack_shadow_25: 6063174038250478725
+      orc1_run_attack_shadow_26: -5416275263708122834
+      orc1_run_attack_shadow_27: 8912953211901584003
+      orc1_run_attack_shadow_28: -5564918225416550516
+      orc1_run_attack_shadow_29: -6489562463765507018
+      orc1_run_attack_shadow_3: -7996467017296513785
+      orc1_run_attack_shadow_30: 4471477665293194884
+      orc1_run_attack_shadow_31: -2888135347993531030
+      orc1_run_attack_shadow_4: 7258054513538794123
+      orc1_run_attack_shadow_5: 2562057645528955670
+      orc1_run_attack_shadow_6: 5531101869337785706
+      orc1_run_attack_shadow_7: 6705168591994900292
+      orc1_run_attack_shadow_8: -7508629677983912610
+      orc1_run_attack_shadow_9: 6432466761752636525
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

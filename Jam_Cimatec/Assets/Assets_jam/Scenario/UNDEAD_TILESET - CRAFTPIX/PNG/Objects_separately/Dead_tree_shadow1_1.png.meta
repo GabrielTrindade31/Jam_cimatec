@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dead_tree_shadow1_1_0: 5135434468978845758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

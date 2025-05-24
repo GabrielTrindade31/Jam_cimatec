@@ -1,13 +1,22 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+public enum BuildType
+{
+    ATTACK,
+    GENERATION,
+    DEFENSE
+}
 
 [Serializable]
 public abstract class Build : MonoBehaviour
 {
     public GameObject prefab;
     public string buildName;
+    public BuildType buildType;
     public int cost;
-    public int life;
+    public Stat life;
     public int maxLife;
 
     public virtual void Initialize(GameObject instance) { }
@@ -35,4 +44,11 @@ public abstract class Build : MonoBehaviour
         return newBuild;
 
     }
+}
+
+[Serializable]
+public class BuildEntry
+{
+    public BuildType buildType;
+    public List<Build> constructions;
 }

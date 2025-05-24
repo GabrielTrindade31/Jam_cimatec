@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private float fireTimer;
+    [HideInInspector] public bool isBuilding = false;
 
     void Awake()
     {
@@ -64,10 +65,13 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (fireTimer > 0) return;
-        GameObject p = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        if (p.TryGetComponent<Bullet>(out var b)) b.Init(stats.Damage.Value);
-        fireTimer = 1f / stats.AttackSpeed.Value;
+        if (!isBuilding)
+        {
+            if (fireTimer > 0) return;
+            GameObject p = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            if (p.TryGetComponent<Bullet>(out var b)) b.Init(stats.Damage.Value);
+            fireTimer = 1f / stats.AttackSpeed.Value;
+        }
     }
 
     void TryDash()

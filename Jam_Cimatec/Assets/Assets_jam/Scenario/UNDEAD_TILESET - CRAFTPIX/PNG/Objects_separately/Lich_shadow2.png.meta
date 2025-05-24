@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lich_shadow2_0: 6253807215201838386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

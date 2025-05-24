@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dead_arm_shadow3_3_0: -8297571232710379505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

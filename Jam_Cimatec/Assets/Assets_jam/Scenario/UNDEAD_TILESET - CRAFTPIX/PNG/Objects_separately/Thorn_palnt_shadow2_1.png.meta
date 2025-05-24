@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Thorn_palnt_shadow2_1_0: -9050985842171020671
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

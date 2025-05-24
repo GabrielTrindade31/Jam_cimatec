@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Thorn_plant_shadow3_6_0: 6320683160114081648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

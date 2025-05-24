@@ -130,9 +130,10 @@ GameObject:
   - component: {fileID: 70137386}
   - component: {fileID: 70137385}
   - component: {fileID: 70137383}
-  - component: {fileID: 70137382}
   - component: {fileID: 70137388}
+  - component: {fileID: 70137382}
   - component: {fileID: 70137387}
+  - component: {fileID: 70137389}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -280,6 +281,7 @@ MonoBehaviour:
   dashCooldown: 1
   firePoint: {fileID: 0}
   projectilePrefab: {fileID: 0}
+  isBuilding: 0
 --- !u!114 &70137388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +312,26 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
+--- !u!114 &70137389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70137381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1866bdf69e48f42b21f093f3c096da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 0}
+  buildSet:
+  - buildType: 0
+    constructions:
+    - {fileID: 3964920476668778022, guid: 847cb2601d30e6c40998a2ea7120e33c, type: 3}
+    - {fileID: 3964920476668778022, guid: 80fce17e2ca9f82409c6c6e969c2cf03, type: 3}
+  selectedBuildType: 0
+  buildIndex: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

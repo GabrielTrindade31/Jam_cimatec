@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grave_shadow2_10_0: 2838530099813896465
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

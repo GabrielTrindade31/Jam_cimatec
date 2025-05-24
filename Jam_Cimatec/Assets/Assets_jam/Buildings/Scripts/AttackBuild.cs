@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
+[Serializable]
 public class AttackBuild : Build
 {
-    public int damage;
-    public float atkRadius;
+    public Stat damage;
+    public Stat atkRadius;
     public float atkTime;
     [SerializeField] private float originRadius;
     public GameObject projectile;
@@ -15,7 +17,7 @@ public class AttackBuild : Build
         StartCoroutine(nameof(AtkLoop));
     }
 
-    void OnDestroy()       
+    void OnDestroy()
     {
         StopAllCoroutines();
     }
@@ -23,11 +25,11 @@ public class AttackBuild : Build
     IEnumerator AtkLoop()
     {
         yield return new WaitForSeconds(atkTime);
-        var targets = Physics2D.OverlapCircleAll(transform.position, atkRadius, enemyLayer);
+        var targets = Physics2D.OverlapCircleAll(transform.position, atkRadius.Value, enemyLayer);
         if (targets.Length > 0)
         {
             Vector2 target = NearestTargetPos(targets);
-            Vector2 origin = (Vector2)transform.position + originRadius*target.normalized;
+            Vector2 origin = (Vector2)transform.position + originRadius * target.normalized;
             var proj = Instantiate(projectile, origin, Quaternion.identity);
             proj.GetComponent<Projectile>().Shoot(target, damage);
         }
@@ -47,5 +49,13 @@ public class AttackBuild : Build
             }
         }
         return (Vector2)target;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, atkRadius.Value);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, originRadius);
     }
 }
