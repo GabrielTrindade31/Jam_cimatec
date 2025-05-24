@@ -333,6 +333,7 @@ MonoBehaviour:
     - {fileID: 3964920476668778022, guid: 80fce17e2ca9f82409c6c6e969c2cf03, type: 3}
   selectedBuildType: 0
   buildIndex: 0
+  cash: 500
 --- !u!1 &302774224
 GameObject:
   m_ObjectHideFlags: 0
