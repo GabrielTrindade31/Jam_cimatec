@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -8,6 +9,7 @@ public class TowerBuilder : MonoBehaviour
 {
     public Tilemap tilemap;
     [SerializeField] private List<BuildEntry> buildSet = new();
+    [SerializeField] private TextMeshProUGUI textMesh;
     public BuildType selectedBuildType;
     public int buildIndex;
     public int cash;
@@ -20,6 +22,9 @@ public class TowerBuilder : MonoBehaviour
     private PlayerController playerController;
     private GameObject currentGhost;
     private Build CurrentBuild => enabledBuilds[selectedBuildType][buildIndex];
+
+    private float lastScrollTime;
+    private readonly float scrollCooldown = 0.15f;
     void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -42,8 +47,8 @@ public class TowerBuilder : MonoBehaviour
 
     void OnEnable()
     {
-        input.actions["Previous"].performed += _ => PreviousBuilding();
-        input.actions["Next"].performed += _ => NextBuilding();
+        input.actions["Previous"].performed += _ => PreviousBuildClass();
+        input.actions["Next"].performed += _ => NextBuildClass();
         input.actions["Jump"].performed += _ => ChangeBuildMode();
         input.actions["Fire"].performed += _ => TryBuild();
         input.actions["Rotate"].performed += _ => Rotate();
@@ -51,8 +56,8 @@ public class TowerBuilder : MonoBehaviour
 
     void OnDisable()
     {
-        input.actions["Previous"].performed -= _ => PreviousBuilding();
-        input.actions["Next"].performed -= _ => NextBuilding();
+        input.actions["Previous"].performed -= _ => PreviousBuildClass();
+        input.actions["Next"].performed -= _ => NextBuildClass();
         input.actions["Jump"].performed -= _ => ChangeBuildMode();
         input.actions["Fire"].performed -= _ => TryBuild();
         input.actions["Rotate"].performed -= _ => Rotate();
@@ -60,10 +65,31 @@ public class TowerBuilder : MonoBehaviour
 
     void Update()
     {
+        textMesh.text = $"Cash: R${cash},00";
         if (playerController.isBuilding)
             UpdateGhostPosition();
         else
-            currentGhost = null;   
+            currentGhost = null;
+
+        HandleScrollInput();
+    }
+
+    void HandleScrollInput()
+    {
+        if (Time.time - lastScrollTime < scrollCooldown) return;
+
+        float scroll = Mouse.current.scroll.ReadValue().y;
+
+        if (scroll > 0f)
+        {
+            NextBuilding();
+            lastScrollTime = Time.time;
+        }
+        else if (scroll < 0f)
+        {
+            PreviousBuilding();
+            lastScrollTime = Time.time;
+        }
     }
 
     void Rotate()
@@ -83,6 +109,40 @@ public class TowerBuilder : MonoBehaviour
         }
         else if (currentGhost != null)
             Destroy(currentGhost);
+    }
+
+    void PreviousBuildClass()
+    {
+        switch (selectedBuildType)
+        {
+            case BuildType.ATTACK:
+                selectedBuildType = BuildType.GENERATION;
+                break;
+            case BuildType.GENERATION:
+                selectedBuildType = BuildType.DEFENSE;
+                break;
+            case BuildType.DEFENSE:
+                selectedBuildType = BuildType.ATTACK;
+                break;
+        }
+        SelectBuild(0);
+    }
+
+    void NextBuildClass()
+    {
+        switch (selectedBuildType)
+        {
+            case BuildType.ATTACK:
+                selectedBuildType = BuildType.DEFENSE;
+                break;
+            case BuildType.GENERATION:
+                selectedBuildType = BuildType.ATTACK;
+                break;
+            case BuildType.DEFENSE:
+                selectedBuildType = BuildType.GENERATION;
+                break;
+        }
+        SelectBuild(0);
     }
 
     void PreviousBuilding()

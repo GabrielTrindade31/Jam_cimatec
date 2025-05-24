@@ -1,11 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-public class GeneratorBuild : Build
+public class CoreBuild : Build
 {
+    public Stat regenAmaunt;
+    public float regenCooldown;
     private TowerBuilder tw;
     public Stat generationAmaunt;
     public float generationCooldown;
+    void Awake()
+    {
+        StartCoroutine(nameof(RegenerationLoop));
+        StartCoroutine(nameof(GenerationLoop));
+    }
+
+    void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 
     public void Initialize(TowerBuilder origin)
     {
@@ -20,22 +32,22 @@ public class GeneratorBuild : Build
         return newBuild;
     }
 
-    void Awake()
-    {
-        StartCoroutine(nameof(GenerationLoop));
-    }
-
-    void OnDestroy()
-    {
-        StopAllCoroutines();
-    }
-
     IEnumerator GenerationLoop()
     {
         while (currentLife > 0)
         {
             yield return new WaitForSeconds(generationCooldown);
             tw.cash += (int)Mathf.Ceil(generationAmaunt.Value);
+        }
+    }
+
+    IEnumerator RegenerationLoop()
+    {
+        while (currentLife > 0)
+        {
+            yield return new WaitForSeconds(regenCooldown);
+            float increase = currentLife + regenAmaunt.Value;
+            currentLife = (increase > MaxLife.Value) ? MaxLife.Value : increase;
         }
     }
 }

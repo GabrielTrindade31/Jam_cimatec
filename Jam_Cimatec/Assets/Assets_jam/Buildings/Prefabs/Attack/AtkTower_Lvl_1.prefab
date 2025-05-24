@@ -115,9 +115,12 @@ MonoBehaviour:
   atkRadius:
     BaseValue: 8
     ModifierValue: 0
-  atkTime: 0
+  projectileSpeed:
+    BaseValue: 7
+    ModifierValue: 0
+  atkTime: 1
   originRadius: 1.5
   projectile: {fileID: 6070537868079363984, guid: 80996a9cb40653c459517ce052930664, type: 3}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16

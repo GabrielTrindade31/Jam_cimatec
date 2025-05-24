@@ -25,14 +25,18 @@ public class AttackBuild : Build
 
     IEnumerator AtkLoop()
     {
-        yield return new WaitForSeconds(atkTime);
-        var targets = Physics2D.OverlapCircleAll(transform.position, atkRadius.Value, enemyLayer);
-        if (targets.Length > 0)
+        while (true)
         {
-            Vector2 target = NearestTargetPos(targets);
-            Vector2 origin = (Vector2)transform.position + originRadius * target.normalized;
-            var proj = Instantiate(projectile, origin, Quaternion.identity);
-            proj.GetComponent<Projectile>().Shoot(projectileSpeed.Value, target, damage);
+            yield return new WaitForSeconds(atkTime);
+            var targets = Physics2D.OverlapCircleAll(transform.position, atkRadius.Value, enemyLayer);
+            if (targets.Length > 0)
+            {
+                Vector2 target = NearestTargetPos(targets);
+                Vector2 dir = ((Vector3)target - transform.position).normalized;
+                Vector2 origin = (Vector2)transform.position + originRadius * dir;
+                var proj = Instantiate(projectile, origin, Quaternion.identity);
+                proj.GetComponent<Projectile>().Shoot(projectileSpeed.Value, dir, damage);
+            }
         }
     }
 
@@ -52,7 +56,7 @@ public class AttackBuild : Build
         return (Vector2)target;
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, atkRadius.Value);

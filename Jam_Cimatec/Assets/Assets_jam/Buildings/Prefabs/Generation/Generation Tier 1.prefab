@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6070537868079363984
+--- !u!1 &7326885442194680247
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,66 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6561156214729297977}
-  - component: {fileID: 3874421956721280738}
-  - component: {fileID: 8628721638226638019}
-  - component: {fileID: 5523588327467606884}
+  - component: {fileID: 8425430053929437404}
+  - component: {fileID: 1441106326687217224}
+  - component: {fileID: 12742093929244588}
   m_Layer: 0
-  m_Name: BasicProjectile
+  m_Name: Generation Tier 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6561156214729297977
+--- !u!4 &8425430053929437404
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070537868079363984}
+  m_GameObject: {fileID: 7326885442194680247}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 6.16489, y: 2.58669, z: 0}
-  m_LocalScale: {x: 0.71009, y: 0.71009, z: 0.71009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.16, y: 2.79, z: 0}
+  m_LocalScale: {x: 4.873769, y: 4.873769, z: 4.873769}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!50 &3874421956721280738
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070537868079363984}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!212 &8628721638226638019
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1441106326687217224
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070537868079363984}
+  m_GameObject: {fileID: 7326885442194680247}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -104,32 +76,40 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: -9095717837082945937, guid: c226496b92fd27f4db59bc708437f983, type: 3}
-  m_Color: {r: 0.78867924, g: 0.6001448, b: 0.28422216, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: -2035105256428418344, guid: 3ac934a4f6693ca4b9b40601f55f1d13, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.33, y: 0.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5523588327467606884
+--- !u!114 &12742093929244588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070537868079363984}
+  m_GameObject: {fileID: 7326885442194680247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4527d20d1d1874e499a5fb446debaf25, type: 3}
+  m_Script: {fileID: 11500000, guid: 20c65e244ac2fba46be0b8538265b08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  damage:
-    BaseValue: 10
+  prefab: {fileID: 7326885442194680247}
+  buildName: Gerador tier 1
+  buildType: 1
+  cost: 20
+  life:
+    BaseValue: 100
     ModifierValue: 0
-  lifeTime: 20
+  maxLife: 100
+  canRotate: 0
+  generationAmaunt:
+    BaseValue: 2
+    ModifierValue: 0
+  generationCooldown: 1

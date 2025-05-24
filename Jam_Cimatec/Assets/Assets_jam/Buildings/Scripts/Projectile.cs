@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     public Stat damage;
     public float lifeTime;
 
-    void Start()
+    void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
     }
@@ -27,6 +27,10 @@ public class Projectile : MonoBehaviour
         this.damage = damage;
         this.direction = direction.normalized;
         alive = true;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+
         Invoke(nameof(DestroyViaLifetime), lifeTime);
     }
 

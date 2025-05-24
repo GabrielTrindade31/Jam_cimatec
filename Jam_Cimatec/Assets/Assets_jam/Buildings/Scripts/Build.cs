@@ -6,7 +6,8 @@ public enum BuildType
 {
     ATTACK,
     GENERATION,
-    DEFENSE
+    DEFENSE,
+    CoreBuild
 }
 
 [Serializable]
@@ -16,9 +17,14 @@ public abstract class Build : MonoBehaviour
     public string buildName;
     public BuildType buildType;
     public int cost;
-    public Stat life;
-    public float maxLife;
+    public float currentLife;
+    public Stat MaxLife;
     public bool canRotate = false;
+
+    void Awake()
+    {
+        currentLife = MaxLife.Value;
+    }
 
     public GameObject CreateGhostInstance(float rotation)
     {
