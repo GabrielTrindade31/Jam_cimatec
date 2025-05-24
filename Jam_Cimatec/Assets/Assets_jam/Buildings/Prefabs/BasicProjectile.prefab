@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6561156214729297977}
   - component: {fileID: 3874421956721280738}
   - component: {fileID: 8628721638226638019}
-  - component: {fileID: 5523588327467606884}
   m_Layer: 0
   m_Name: BasicProjectile
   m_TagString: Untagged
