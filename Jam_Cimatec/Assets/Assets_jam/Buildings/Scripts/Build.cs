@@ -17,13 +17,13 @@ public abstract class Build : MonoBehaviour
     public BuildType buildType;
     public int cost;
     public Stat life;
-    public int maxLife;
+    public float maxLife;
+    public bool canRotate = false;
 
-    public virtual void Initialize(GameObject instance) { }
-
-    public virtual GameObject CreateGhostInstance()
+    public GameObject CreateGhostInstance(float rotation)
     {
-        GameObject ghost = Instantiate(prefab);
+        Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
+        GameObject ghost = Instantiate(prefab, Vector3.zero, rot);
 
         foreach (var comp in ghost.GetComponentsInChildren<Collider2D>()) //Remove as colisões do fantasma
             Destroy(comp);
@@ -37,12 +37,11 @@ public abstract class Build : MonoBehaviour
         return ghost;
     }
 
-    public virtual GameObject BuildIn(Vector3 position)
+    public virtual GameObject BuildIn(Vector3 position, float rotation)
     {
-        GameObject newBuild = Instantiate(prefab, position, Quaternion.identity);
-        Initialize(newBuild);
+        Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
+        GameObject newBuild = Instantiate(prefab, position, rot);
         return newBuild;
-
     }
 }
 
