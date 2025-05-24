@@ -21,7 +21,7 @@ public abstract class Build : MonoBehaviour
 
     public virtual void Initialize(GameObject instance) { }
 
-    public virtual GameObject CreateGhost()
+    public virtual GameObject CreateGhostInstance()
     {
         GameObject ghost = Instantiate(prefab);
 

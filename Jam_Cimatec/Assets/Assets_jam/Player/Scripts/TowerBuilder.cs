@@ -10,11 +10,13 @@ public class TowerBuilder : MonoBehaviour
     [SerializeField] private List<BuildEntry> buildSet = new();
     public BuildType selectedBuildType;
     public int buildIndex;
+    public int cash;
     private Dictionary<BuildType, List<Build>> enabledBuilds;
     private Dictionary<Vector2Int, GameObject> notEmptySpaces = new();
     private PlayerInput input;
     private PlayerController playerController;
     private GameObject currentGhost;
+    private Build CurrentBuild => enabledBuilds[selectedBuildType][buildIndex];
     void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -62,15 +64,30 @@ public class TowerBuilder : MonoBehaviour
     void ChangeBuildMode()
     {
         playerController.isBuilding = !playerController.isBuilding;
+        if (playerController.isBuilding)
+        {
+            if (currentGhost != null)
+                Destroy(currentGhost);
+
+            currentGhost = CurrentBuild.CreateGhostInstance();
+        }
+        else if (currentGhost != null)
+            Destroy(currentGhost);
     }
 
     void PreviousBuilding()
     {
+        int count = enabledBuilds[selectedBuildType].Count;
+        int newIndex = (buildIndex - 1 + count) % count;
+        SelectBuild(newIndex);
         SelectBuild(buildIndex - 1);
     }
 
     void NextBuilding()
     {
+        int count = enabledBuilds[selectedBuildType].Count;
+        int newIndex = (buildIndex + 1) % count;
+        SelectBuild(newIndex);
         SelectBuild(buildIndex + 1);
     }
 
@@ -82,6 +99,9 @@ public class TowerBuilder : MonoBehaviour
 
             if (currentGhost != null)
                 Destroy(currentGhost);
+            
+            if (playerController.isBuilding)
+                currentGhost = CurrentBuild.CreateGhostInstance();
 
             if (playerController.isBuilding)
                 currentGhost = Instantiate(enabledBuilds[selectedBuildType][buildIndex].CreateGhost());
@@ -92,6 +112,9 @@ public class TowerBuilder : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0;
+
+        Vector2Int gridPos = World2Grid(mousePos);
+        Vector3 ghostPos = Grid2World(gridPos);
         Vector2Int gridPos = World2Grid(mousePos);
         Vector3 ghostPos = Grid2World(gridPos);
         if (playerController.isBuilding && currentGhost == null)
@@ -113,6 +136,7 @@ public class TowerBuilder : MonoBehaviour
 
     void TryBuild()
     {
+        if (playerController.isBuilding && cash >= CurrentBuild.cost)
         if (playerController.isBuilding)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -122,6 +146,8 @@ public class TowerBuilder : MonoBehaviour
             if (notEmptySpaces.ContainsKey(gridPos)) return;
 
             Vector3 finalPosition = Grid2World(gridPos);
+            cash -= CurrentBuild.cost;
+            GameObject newTower = CurrentBuild.BuildIn(finalPosition);
             GameObject newTower = Instantiate(enabledBuilds[selectedBuildType][buildIndex].prefab, finalPosition, Quaternion.identity);
             notEmptySpaces[gridPos] = newTower;
         }
