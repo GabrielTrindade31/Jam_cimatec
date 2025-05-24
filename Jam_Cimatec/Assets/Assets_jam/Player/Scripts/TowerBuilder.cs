@@ -152,7 +152,7 @@ public class TowerBuilder : MonoBehaviour
             Vector3 finalPosition = Grid2World(gridPos);
             cash -= CurrentBuild.cost;
             float buildRotation = CurrentBuild.canRotate ? currentRotation : 0f;
-            GameObject newTower = CurrentBuild.BuildIn(finalPosition, buildRotation);
+            GameObject newTower = CurrentBuild.BuildIn(finalPosition, buildRotation, this);
             notEmptySpaces[gridPos] = newTower;
         }
     }

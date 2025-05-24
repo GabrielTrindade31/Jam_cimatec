@@ -21,8 +21,9 @@ public class Projectile : MonoBehaviour
             rig.linearVelocity = direction * speed;
     }
 
-    public void Shoot(Vector2 direction, Stat damage)
+    public void Shoot(float speed, Vector2 direction, Stat damage)
     {
+        this.speed = speed;
         this.damage = damage;
         this.direction = direction.normalized;
         alive = true;

@@ -7,6 +7,7 @@ public class AttackBuild : Build
 {
     public Stat damage;
     public Stat atkRadius;
+    public Stat projectileSpeed;
     public float atkTime;
     [SerializeField] private float originRadius;
     public GameObject projectile;
@@ -31,7 +32,7 @@ public class AttackBuild : Build
             Vector2 target = NearestTargetPos(targets);
             Vector2 origin = (Vector2)transform.position + originRadius * target.normalized;
             var proj = Instantiate(projectile, origin, Quaternion.identity);
-            proj.GetComponent<Projectile>().Shoot(target, damage);
+            proj.GetComponent<Projectile>().Shoot(projectileSpeed.Value, target, damage);
         }
     }
 

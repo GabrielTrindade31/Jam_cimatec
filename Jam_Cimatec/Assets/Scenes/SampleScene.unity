@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 70137387}
   - component: {fileID: 70137389}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,8 @@ Transform:
   m_LocalPosition: {x: -1.1170373, y: 1.6370925, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 467589480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &70137387
@@ -279,8 +280,8 @@ MonoBehaviour:
   dashSpeed: 12
   dashDuration: 0.2
   dashCooldown: 1
-  firePoint: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  firePoint: {fileID: 467589480}
+  projectilePrefab: {fileID: 9017837834711182627, guid: c66709c7501ccca40a56a5b74a6122ca, type: 3}
   isBuilding: 0
 --- !u!114 &70137388
 MonoBehaviour:
@@ -324,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1866bdf69e48f42b21f093f3c096da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
+  tilemap: {fileID: 1117827298}
   buildSet:
   - buildType: 0
     constructions:
@@ -332,6 +333,9 @@ MonoBehaviour:
     - {fileID: 3964920476668778022, guid: 80fce17e2ca9f82409c6c6e969c2cf03, type: 3}
   selectedBuildType: 0
   buildIndex: 0
+  cash: 0
+  tunrPerClick: 22.5
+  currentRotation: 0
 --- !u!1 &196716376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,6 +2435,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &467589479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467589480}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &467589480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467589479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.62, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70137386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

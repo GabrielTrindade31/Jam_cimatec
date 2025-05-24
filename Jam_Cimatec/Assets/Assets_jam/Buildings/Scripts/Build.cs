@@ -37,7 +37,7 @@ public abstract class Build : MonoBehaviour
         return ghost;
     }
 
-    public virtual GameObject BuildIn(Vector3 position, float rotation)
+    public virtual GameObject BuildIn(Vector3 position, float rotation, TowerBuilder tw)
     {
         Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
         GameObject newBuild = Instantiate(prefab, position, rot);

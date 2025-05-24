@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3964920476668778022}
   m_Layer: 0
   m_Name: AtkTower_Lvl_1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7859958447799540355, guid: 3ac934a4f6693ca4b9b40601f55f1d13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,11 +102,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5584995273255584011}
   buildName: "Canh\xE3o B\xE1sico"
+  buildType: 0
   cost: 50
   life:
     BaseValue: 1
     ModifierValue: 0
   maxLife: 0
+  canRotate: 1
   damage:
     BaseValue: 1
     ModifierValue: 0
