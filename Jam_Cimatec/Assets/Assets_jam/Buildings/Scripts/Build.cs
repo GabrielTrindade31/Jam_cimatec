@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BuildType
 {
@@ -10,9 +11,9 @@ public enum BuildType
     CoreBuild
 }
 
-[Serializable]
 public abstract class Build : MonoBehaviour
 {
+    protected Slider healthBar;
     public GameObject prefab;
     public string buildName;
     public BuildType buildType;
@@ -21,9 +22,17 @@ public abstract class Build : MonoBehaviour
     public Stat MaxLife;
     public bool canRotate = false;
 
-    void Awake()
+    void Start()
     {
         currentLife = MaxLife.Value;
+        healthBar = transform.GetComponentInChildren<Slider>(true);
+    }
+
+    void Update()
+    {
+        healthBar.maxValue = MaxLife.Value;
+        healthBar.value = currentLife;
+        healthBar.fillRect.gameObject.SetActive(currentLife > 0.01);
     }
 
     public GameObject CreateGhostInstance(float rotation)
