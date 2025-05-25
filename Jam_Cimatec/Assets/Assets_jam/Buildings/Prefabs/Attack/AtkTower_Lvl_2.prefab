@@ -590,7 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3832b5ba6956eb349877181c042ca2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   prefab: {fileID: 5584995273255584011}
   buildName: "Canh\xE3o M\xE9dio"
   buildType: 0
@@ -614,4 +613,4 @@ MonoBehaviour:
   projectile: {fileID: 6070537868079363984, guid: 80996a9cb40653c459517ce052930664, type: 3}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 128

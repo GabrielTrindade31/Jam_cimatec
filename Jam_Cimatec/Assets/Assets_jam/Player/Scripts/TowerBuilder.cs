@@ -8,6 +8,7 @@ using UnityEngine.Tilemaps;
 public class TowerBuilder : MonoBehaviour
 {
     public Tilemap tilemap;
+    [SerializeField] private float safeZoneRadius;
     [SerializeField] private List<BuildEntry> buildSet = new();
     [SerializeField] private TextMeshProUGUI textMesh;
     public BuildType selectedBuildType;
@@ -52,6 +53,7 @@ public class TowerBuilder : MonoBehaviour
         input.actions["Jump"].performed += _ => ChangeBuildMode();
         input.actions["Fire"].performed += _ => TryBuild();
         input.actions["Rotate"].performed += _ => Rotate();
+        input.actions["Remove"].performed += _ => TryDestroyBuild();
     }
 
     void OnDisable()
@@ -61,6 +63,7 @@ public class TowerBuilder : MonoBehaviour
         input.actions["Jump"].performed -= _ => ChangeBuildMode();
         input.actions["Fire"].performed -= _ => TryBuild();
         input.actions["Rotate"].performed -= _ => Rotate();
+        input.actions["Remove"].performed += _ => TryDestroyBuild();
     }
 
     void Update()
@@ -167,7 +170,7 @@ public class TowerBuilder : MonoBehaviour
 
             if (currentGhost != null)
                 Destroy(currentGhost);
-            
+
             if (playerController.isBuilding)
                 currentGhost = CurrentBuild.CreateGhostInstance(0f);
         }
@@ -188,7 +191,7 @@ public class TowerBuilder : MonoBehaviour
             currentGhost.transform.rotation = Quaternion.identity;
     }
 
-    Vector2Int World2Grid(Vector3 worldPos)
+    public Vector2Int World2Grid(Vector3 worldPos)
     {
         Vector3Int cellPos = tilemap.WorldToCell(worldPos);
         return new Vector2Int(cellPos.x, cellPos.y);
@@ -197,6 +200,26 @@ public class TowerBuilder : MonoBehaviour
     Vector3 Grid2World(Vector2Int gridPos)
     {
         return tilemap.GetCellCenterWorld(new Vector3Int(gridPos.x, gridPos.y, 0));
+    }
+
+    public void RemoveBuildFromMap(Vector2Int position)
+    {
+        if (notEmptySpaces.ContainsKey(position))
+        {
+            Destroy(notEmptySpaces[position]);
+            notEmptySpaces.Remove(position);
+        }
+    }
+
+    void TryDestroyBuild()
+    {
+        if (playerController.isBuilding)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            mousePos.z = 0;
+            Vector2Int gridPos = World2Grid(mousePos);
+            RemoveBuildFromMap(gridPos);
+        }
     }
 
     void TryBuild()
@@ -210,10 +233,19 @@ public class TowerBuilder : MonoBehaviour
             if (notEmptySpaces.ContainsKey(gridPos)) return;
 
             Vector3 finalPosition = Grid2World(gridPos);
+
+            if (finalPosition.magnitude > safeZoneRadius) return;
+
             cash -= CurrentBuild.cost;
             float buildRotation = CurrentBuild.canRotate ? currentRotation : 0f;
             GameObject newTower = CurrentBuild.BuildIn(finalPosition, buildRotation, this);
             notEmptySpaces[gridPos] = newTower;
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(Vector3.zero, safeZoneRadius);
     }
 }

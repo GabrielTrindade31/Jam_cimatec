@@ -3,22 +3,8 @@ using UnityEngine;
 
 public class GeneratorBuild : Build
 {
-    private TowerBuilder tw;
     public Stat generationAmaunt;
     public float generationCooldown;
-
-    public void Initialize(TowerBuilder origin)
-    {
-        tw = origin;
-    }
-
-    public override GameObject BuildIn(Vector3 position, float rotation, TowerBuilder tw)
-    {
-        Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
-        GameObject newBuild = Instantiate(prefab, position, rot);
-        newBuild.GetComponent<GeneratorBuild>().Initialize(tw);
-        return newBuild;
-    }
 
     void Awake()
     {

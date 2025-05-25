@@ -5,7 +5,6 @@ public class CoreBuild : Build
 {
     public Stat regenAmaunt;
     public float regenCooldown;
-    private TowerBuilder tw;
     public Stat generationAmaunt;
     public float generationCooldown;
     void Awake()
@@ -19,11 +18,6 @@ public class CoreBuild : Build
     void OnDestroy()
     {
         StopAllCoroutines();
-    }
-
-    public override GameObject BuildIn(Vector3 position, float rotation, TowerBuilder tw)
-    {
-        return null;
     }
 
     IEnumerator GenerationLoop()

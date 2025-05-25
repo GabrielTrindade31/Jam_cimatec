@@ -39,4 +39,16 @@ public class Projectile : MonoBehaviour
         alive = false;
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Bullet colidiu com um objeto! " + other.gameObject.name);
+        
+        if (other.CompareTag("Enemy"))
+        {
+            if (other.TryGetComponent<Enemy>(out var e))
+                e.TakeDamage(damage.Value);
+        }
+        Destroy(gameObject);
+    }
 }

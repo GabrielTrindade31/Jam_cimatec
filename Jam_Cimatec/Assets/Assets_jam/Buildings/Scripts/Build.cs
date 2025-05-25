@@ -13,6 +13,7 @@ public enum BuildType
 
 public abstract class Build : MonoBehaviour
 {
+    protected TowerBuilder tw;
     protected Slider healthBar;
     public GameObject prefab;
     public string buildName;
@@ -26,6 +27,17 @@ public abstract class Build : MonoBehaviour
     {
         currentLife = MaxLife.Value;
         healthBar = transform.GetComponentInChildren<Slider>(true);
+    }
+
+    public void Initialize(TowerBuilder tw)
+    {
+        this.tw = tw;
+    }
+
+    public void DeleteBuild()
+    {
+        // Joga aqui um animator de morte
+        tw.RemoveBuildFromMap(tw.World2Grid(transform.position));
     }
 
     void Update()
@@ -52,10 +64,11 @@ public abstract class Build : MonoBehaviour
         return ghost;
     }
 
-    public virtual GameObject BuildIn(Vector3 position, float rotation, TowerBuilder tw)
+    public GameObject BuildIn(Vector3 position, float rotation, TowerBuilder tw)
     {
         Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
         GameObject newBuild = Instantiate(prefab, position, rot);
+        newBuild.GetComponent<Build>().Initialize(tw);
         return newBuild;
     }
 }
