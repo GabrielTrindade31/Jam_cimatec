@@ -6,8 +6,8 @@ using UnityEngine;
 public class AttackBuild : Build
 {
     public Stat damage;
-    public Stat atkRadius;
     public Stat projectileSpeed;
+    public float atkRadius;
     public float atkTime;
     [SerializeField] private float originRadius;
     public GameObject projectile;
@@ -29,7 +29,7 @@ public class AttackBuild : Build
         while (true)
         {
             yield return new WaitForSeconds(atkTime);
-            var targets = Physics2D.OverlapCircleAll(transform.position, atkRadius.Value, enemyLayer);
+            var targets = Physics2D.OverlapCircleAll(transform.position, atkRadius, enemyLayer);
             if (targets.Length > 0)
             {
                 Vector2 target = NearestTargetPos(targets);
@@ -60,7 +60,7 @@ public class AttackBuild : Build
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, atkRadius.Value);
+        Gizmos.DrawWireSphere(transform.position, atkRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, originRadius);
     }

@@ -8,7 +8,8 @@ using UnityEngine.Tilemaps;
 public class TowerBuilder : MonoBehaviour
 {
     public Tilemap tilemap;
-    [SerializeField] private float safeZoneRadius;
+    public Stat safeZoneRadius;
+    [HideInInspector] public UpgradeUI upgradeUI;
     [SerializeField] private List<BuildEntry> buildSet = new();
     [SerializeField] private TextMeshProUGUI textMesh;
     public BuildType selectedBuildType;
@@ -17,10 +18,10 @@ public class TowerBuilder : MonoBehaviour
     public float tunrPerClick = 22.5f;
     public float currentRotation;
 
-    private Dictionary<BuildType, List<Build>> enabledBuilds;
-    private Dictionary<Vector2Int, GameObject> notEmptySpaces = new();
+    public Dictionary<BuildType, List<Build>> enabledBuilds;
+    private readonly Dictionary<Vector2Int, GameObject> notEmptySpaces = new();
     private PlayerInput input;
-    private PlayerController playerController;
+    [HideInInspector] public PlayerController playerController;
     private GameObject currentGhost;
     private Build CurrentBuild => enabledBuilds[selectedBuildType][buildIndex];
 
@@ -69,7 +70,7 @@ public class TowerBuilder : MonoBehaviour
     void Update()
     {
         textMesh.text = $"Cash: R${cash},00";
-        if (playerController.isBuilding)
+        if (playerController.isBuilding && !upgradeUI.inMenu)
             UpdateGhostPosition();
         else
             currentGhost = null;
@@ -103,7 +104,7 @@ public class TowerBuilder : MonoBehaviour
     void ChangeBuildMode()
     {
         playerController.isBuilding = !playerController.isBuilding;
-        if (playerController.isBuilding)
+        if (playerController.isBuilding && !upgradeUI.inMenu)
         {
             if (currentGhost != null)
                 Destroy(currentGhost);
@@ -171,7 +172,7 @@ public class TowerBuilder : MonoBehaviour
             if (currentGhost != null)
                 Destroy(currentGhost);
 
-            if (playerController.isBuilding)
+            if (playerController.isBuilding && !upgradeUI.inMenu)
                 currentGhost = CurrentBuild.CreateGhostInstance(0f);
         }
     }
@@ -206,6 +207,8 @@ public class TowerBuilder : MonoBehaviour
     {
         if (notEmptySpaces.ContainsKey(position))
         {
+            int cashBack = (int)Mathf.Ceil(notEmptySpaces[position].GetComponent<Build>().cost / 10);
+            cash += cashBack;
             Destroy(notEmptySpaces[position]);
             notEmptySpaces.Remove(position);
         }
@@ -213,7 +216,7 @@ public class TowerBuilder : MonoBehaviour
 
     void TryDestroyBuild()
     {
-        if (playerController.isBuilding)
+        if (playerController.isBuilding && !upgradeUI.inMenu)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mousePos.z = 0;
@@ -224,7 +227,7 @@ public class TowerBuilder : MonoBehaviour
 
     void TryBuild()
     {
-        if (playerController.isBuilding && cash >= CurrentBuild.cost)
+        if (playerController.isBuilding && !upgradeUI.inMenu && cash >= CurrentBuild.cost)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mousePos.z = 0;
@@ -234,7 +237,7 @@ public class TowerBuilder : MonoBehaviour
 
             Vector3 finalPosition = Grid2World(gridPos);
 
-            if (finalPosition.magnitude > safeZoneRadius) return;
+            if (finalPosition.magnitude > safeZoneRadius.Value) return;
 
             cash -= CurrentBuild.cost;
             float buildRotation = CurrentBuild.canRotate ? currentRotation : 0f;
@@ -246,6 +249,6 @@ public class TowerBuilder : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(Vector3.zero, safeZoneRadius);
+        Gizmos.DrawWireSphere(Vector3.zero, safeZoneRadius.Value);
     }
 }
