@@ -1,0 +1,642 @@
+fileFormatVersion: 2
+guid: ed76d7ad9e0d9014d92eba8a614b09aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3086078464883051505
+    second: Heaven's Fury Spritesheet Large_0
+  - first:
+      213: -8421789797462195390
+    second: Heaven's Fury Spritesheet Large_1
+  - first:
+      213: 2402076542616786139
+    second: Heaven's Fury Spritesheet Large_2
+  - first:
+      213: -134426441572349202
+    second: Heaven's Fury Spritesheet Large_3
+  - first:
+      213: -5408933102916250890
+    second: Heaven's Fury Spritesheet Large_4
+  - first:
+      213: 8857639361049313917
+    second: Heaven's Fury Spritesheet Large_5
+  - first:
+      213: -5817671108979043511
+    second: Heaven's Fury Spritesheet Large_6
+  - first:
+      213: -994005156946217787
+    second: Heaven's Fury Spritesheet Large_7
+  - first:
+      213: 2783306677462127732
+    second: Heaven's Fury Spritesheet Large_8
+  - first:
+      213: -5279361884026586677
+    second: Heaven's Fury Spritesheet Large_9
+  - first:
+      213: -6280531420904129630
+    second: Heaven's Fury Spritesheet Large_10
+  - first:
+      213: 4966431137641988996
+    second: Heaven's Fury Spritesheet Large_11
+  - first:
+      213: -2908922514862508896
+    second: Heaven's Fury Spritesheet Large_12
+  - first:
+      213: 8199217925936878935
+    second: Heaven's Fury Spritesheet Large_13
+  - first:
+      213: -6555185727510116441
+    second: Heaven's Fury Spritesheet Large_14
+  - first:
+      213: -1897387302601056608
+    second: Heaven's Fury Spritesheet Large_15
+  - first:
+      213: 6581159496243681156
+    second: Heaven's Fury Spritesheet Large_16
+  - first:
+      213: 4037653710125591792
+    second: Heaven's Fury Spritesheet Large_17
+  - first:
+      213: 1351056469874180193
+    second: Heaven's Fury Spritesheet Large_18
+  - first:
+      213: -5334762049215304644
+    second: Heaven's Fury Spritesheet Large_19
+  - first:
+      213: 3094768527721300281
+    second: Heaven's Fury Spritesheet Large_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_0
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 25
+        width: 18
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04b9a7acfb0c25d0800000000000000
+      internalID: -3086078464883051505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_1
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 29
+        width: 6
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 243c14dbccacf1b80800000000000000
+      internalID: -8421789797462195390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_2
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 21
+        width: 102
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd4d8f583e3e55120800000000000000
+      internalID: 2402076542616786139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_3
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 41
+        width: 160
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eea09a51ddb622ef0800000000000000
+      internalID: -134426441572349202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_4
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 51
+        width: 88
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f253da200c9fe4b0800000000000000
+      internalID: -5408933102916250890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_5
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 229
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72ccdfa118acea70800000000000000
+      internalID: 8857639361049313917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_6
+      rect:
+        serializedVersion: 2
+        x: 2141
+        y: 187
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 943504123fa734fa0800000000000000
+      internalID: -5817671108979043511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_7
+      rect:
+        serializedVersion: 2
+        x: 2417
+        y: 239
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4705383959432f0800000000000000
+      internalID: -994005156946217787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_8
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 223
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4745a133daa40a620800000000000000
+      internalID: 2783306677462127732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_9
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 161
+        width: 520
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc9bbd57650fbb6b0800000000000000
+      internalID: -5279361884026586677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_10
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 153
+        width: 36
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab7458c2f117d8a0800000000000000
+      internalID: -6280531420904129630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_11
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 151
+        width: 18
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48307907ece4ce440800000000000000
+      internalID: 4966431137641988996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_12
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 179
+        width: 14
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a4fb76826e61a7d0800000000000000
+      internalID: -2908922514862508896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_13
+      rect:
+        serializedVersion: 2
+        x: 2413
+        y: 213
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7559b77234979c170800000000000000
+      internalID: 8199217925936878935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_14
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 3
+        width: 188
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a78c0bcf4d4705a0800000000000000
+      internalID: -6555185727510116441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_15
+      rect:
+        serializedVersion: 2
+        x: 1927
+        y: 185
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ae90231d402ba5e0800000000000000
+      internalID: -1897387302601056608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_16
+      rect:
+        serializedVersion: 2
+        x: 1915
+        y: 165
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4871bcf71b9f45b50800000000000000
+      internalID: 6581159496243681156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_17
+      rect:
+        serializedVersion: 2
+        x: 2429
+        y: 137
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fce21e28a0a80830800000000000000
+      internalID: 4037653710125591792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_18
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 151
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 160085e73baefb210800000000000000
+      internalID: 1351056469874180193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_19
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 83
+        width: 58
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c69475e2e17f5b0800000000000000
+      internalID: -5334762049215304644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaven's Fury Spritesheet Large_20
+      rect:
+        serializedVersion: 2
+        x: 2173
+        y: 129
+        width: 40
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93103e44493d2fa20800000000000000
+      internalID: 3094768527721300281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
