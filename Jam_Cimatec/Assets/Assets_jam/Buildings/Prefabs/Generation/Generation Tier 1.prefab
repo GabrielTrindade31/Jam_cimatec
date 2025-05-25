@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 12742093929244588}
   m_Layer: 0
   m_Name: Generation Tier 1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c65e244ac2fba46be0b8538265b08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   prefab: {fileID: 7326885442194680247}
   buildName: Gerador tier 1
   buildType: 1
@@ -289,9 +288,9 @@ MonoBehaviour:
     ModifierValue: 0
   canRotate: 0
   generationAmaunt:
-    BaseValue: 2
-    ModifierValue: 0
-  generationCooldown: 1
+    BaseValue: 1
+    ModifierValue: 1
+  generationCooldown: 1.7
 --- !u!1 &7355843013026566102
 GameObject:
   m_ObjectHideFlags: 0

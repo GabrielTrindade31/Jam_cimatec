@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    private UpgradeUI upgrade;
     public float moveSpeed = 5f;
     public float dashSpeed = 12f;
     public float dashDuration = 0.2f;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-         rb        = GetComponent<Rigidbody2D>();
+        rb        = GetComponent<Rigidbody2D>();
         stats     = GetComponent<PlayerStats>();
         input     = GetComponent<PlayerInput>();
         animator  = GetComponent<Animator>();
@@ -68,8 +69,8 @@ public class PlayerController : MonoBehaviour
     void AimAtMouse()
     {
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
-        Vector3 world      = Camera.main.ScreenToWorldPoint(mouseScreen);
-        Vector2 aimDir     = (world - transform.position).normalized;
+        Vector3 world       = Camera.main.ScreenToWorldPoint(mouseScreen);
+        Vector2 aimDir      = (world - transform.position).normalized;
 
         firePoint.up = aimDir;
     }
@@ -89,6 +90,11 @@ public class PlayerController : MonoBehaviour
         if (p.TryGetComponent<Bullet>(out var b))
             b.Init(stats.Damage.Value);
         animator.SetBool("Attack", false);
+    }
+
+    public void SetUpUpgradeUI(UpgradeUI x)
+    {
+        upgrade = x;
     }
 
     void TryDash()

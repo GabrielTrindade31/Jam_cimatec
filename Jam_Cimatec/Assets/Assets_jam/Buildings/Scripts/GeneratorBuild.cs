@@ -6,8 +6,9 @@ public class GeneratorBuild : Build
     public Stat generationAmaunt;
     public float generationCooldown;
 
-    void Awake()
+    public override void Start()
     {
+        base.Start();
         StartCoroutine(nameof(GenerationLoop));
     }
 
