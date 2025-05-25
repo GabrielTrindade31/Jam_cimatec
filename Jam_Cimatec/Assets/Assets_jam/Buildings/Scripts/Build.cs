@@ -22,7 +22,7 @@ public abstract class Build : MonoBehaviour
     public Stat MaxLife;
     public bool canRotate = false;
 
-    void Start()
+    public virtual void Start()
     {
         currentLife = MaxLife.Value;
         healthBar = transform.GetComponentInChildren<Slider>(true);

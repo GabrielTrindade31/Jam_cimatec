@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 3964920476668778022}
   m_Layer: 0
   m_Name: AtkTower_Lvl_2
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,13 +590,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3832b5ba6956eb349877181c042ca2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   prefab: {fileID: 5584995273255584011}
   buildName: "Canh\xE3o M\xE9dio"
   buildType: 0
   cost: 80
   currentLife: 0
   MaxLife:
-    BaseValue: 1
+    BaseValue: 100
     ModifierValue: 0
   canRotate: 0
   damage:

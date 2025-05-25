@@ -13,8 +13,9 @@ public class AttackBuild : Build
     public GameObject projectile;
     public LayerMask enemyLayer;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         StartCoroutine(nameof(AtkLoop));
     }
 

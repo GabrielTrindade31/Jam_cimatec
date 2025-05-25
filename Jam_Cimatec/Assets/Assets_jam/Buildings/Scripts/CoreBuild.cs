@@ -10,6 +10,8 @@ public class CoreBuild : Build
     public float generationCooldown;
     void Awake()
     {
+        currentLife = MaxLife.Value;
+        tw = FindAnyObjectByType<TowerBuilder>();
         StartCoroutine(nameof(RegenerationLoop));
         StartCoroutine(nameof(GenerationLoop));
     }
@@ -19,17 +21,9 @@ public class CoreBuild : Build
         StopAllCoroutines();
     }
 
-    public void Initialize(TowerBuilder origin)
-    {
-        tw = origin;
-    }
-
     public override GameObject BuildIn(Vector3 position, float rotation, TowerBuilder tw)
     {
-        Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
-        GameObject newBuild = Instantiate(prefab, position, rot);
-        newBuild.GetComponent<GeneratorBuild>().Initialize(tw);
-        return newBuild;
+        return null;
     }
 
     IEnumerator GenerationLoop()
