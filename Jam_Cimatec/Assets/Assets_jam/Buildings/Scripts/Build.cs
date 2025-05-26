@@ -71,6 +71,21 @@ public abstract class Build : MonoBehaviour
         newBuild.GetComponent<Build>().Initialize(tw);
         return newBuild;
     }
+    public virtual void TakenDamage(float amount)
+    {
+        currentLife -= amount;
+        currentLife = Mathf.Clamp(currentLife, 0f, MaxLife.Value);
+        Debug.Log($"[Build:{buildName}] currentLife = {currentLife}");
+        if (currentLife <= 0f)
+            DestroyBuild();
+    }
+
+    void DestroyBuild()
+    {
+        //Implementar alguma coisa aqui pra ela morrer
+        if (TryGetComponent<Collider2D>(out var col)) col.enabled = false;
+        Destroy(gameObject);
+    }
 }
 
 [Serializable]
