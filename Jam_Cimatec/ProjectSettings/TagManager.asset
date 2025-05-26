@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Enemy
   - PowerCore
+  - CashTxt
+  - SafeZone
   layers:
   - Default
   - TransparentFX

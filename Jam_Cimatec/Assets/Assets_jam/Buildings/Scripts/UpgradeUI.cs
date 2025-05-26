@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class UpgradeUI : MonoBehaviour
 {
     [Header("General")]
-    [SerializeField] private TowerBuilder towerBuilder;
+    public TowerBuilder towerBuilder;
     private PlayerInput playerInput;
     private PlayerStats playerStats;
     public bool inMenu;
+    public bool isEnabled = false;
     public GameObject inGameCash;
     public GameObject upgradeUIObject;
     [SerializeField] Color cheapColor;
@@ -27,26 +28,20 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private List<ButtonUpgrade> upgradesInfos;
     public ButtonUpgrade currentButton;
 
-    void Awake()
+    public void Initialize(TowerBuilder towerBuilder)
     {
+        this.towerBuilder = towerBuilder;
         playerInput = towerBuilder.gameObject.GetComponent<PlayerInput>();
         playerStats = towerBuilder.gameObject.GetComponent<PlayerStats>();
         towerBuilder.playerController.SetUpUpgradeUI(this);
-    }
-    
-    void Start()
-    {
         towerBuilder.upgradeUI = this;
         foreach (var item in upgradesInfos)
         {
             item.Setup(this);
         }
         currentButton = upgradesInfos[0];
-    }
-
-    void OnEnable()
-    {
         playerInput.actions["Menu"].performed += _ => Menu();
+        isEnabled = true;
     }
 
     void OnDisable()
@@ -56,6 +51,7 @@ public class UpgradeUI : MonoBehaviour
 
     void Menu()
     {
+        if (!isEnabled) return;
         if (towerBuilder.playerController.isBuilding) return;
         inMenu = !inMenu;
         if (inMenu)
@@ -64,6 +60,7 @@ public class UpgradeUI : MonoBehaviour
 
     void Update()
     {
+        if (!isEnabled) return;
         upgradeUIObject.SetActive(inMenu);
         inGameCash.SetActive(!inMenu);
         ShowStat();
@@ -81,15 +78,18 @@ public class UpgradeUI : MonoBehaviour
         cashTxt.text = $"Cash: R${towerBuilder.cash},00 ";
     }
 
-    public void UpgradeStat()
+    public void UpgradeStat(int index)
     {
         if (towerBuilder.cash < currentButton.cost) return;
         towerBuilder.cash -= currentButton.cost;
         currentButton.cost *= 2;
 
-        int index = upgradesInfos.IndexOf(currentButton);
-        if (index > 3 && index != 11)
+        if (index <= 3 || index == 11)
+        {
             currentButton.stat.AddModifier(currentButton.defaultIncrease);
+            if (index == 11)
+                towerBuilder.safeZone.SetRadius(towerBuilder.safeZoneRadius.Value);
+        }
         else
             UpgradeTowers(index);
         
@@ -130,7 +130,10 @@ public class UpgradeUI : MonoBehaviour
                         break;
                     case 10:
                         if (gnr != null)
+                        {
                             gnr.generationAmaunt.AddModifier(currentButton.defaultIncrease);
+                            currentButton.cost *= 3 / 2;
+                        }
                         break;
                 }
             }

@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        print("Inimigo morto");
         SpawnEnemys.Instance.EnemyKilled();
         Destroy(gameObject);
     }
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Tower") || other.CompareTag("PowerCore"))
         {
-            var stats = other.GetComponent<StatsEntitys>();
+            var stats = other.GetComponent<Build>();
             if (stats != null)
                 stats.TakeDamage(GetComponent<EnemyStats>().Damage.Value);
         }

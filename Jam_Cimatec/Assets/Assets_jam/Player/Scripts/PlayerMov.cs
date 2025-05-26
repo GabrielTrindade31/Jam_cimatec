@@ -6,8 +6,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerStats))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSfx;
+    [SerializeField] private AudioClip dashSfx;
     private UpgradeUI upgrade;
     public float moveSpeed = 5f;
     public float dashSpeed = 12f;
@@ -34,10 +38,12 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        rb        = GetComponent<Rigidbody2D>();
-        stats     = GetComponent<PlayerStats>();
-        input     = GetComponent<PlayerInput>();
-        animator  = GetComponent<Animator>();
+        rb          = GetComponent<Rigidbody2D>();
+        stats       = GetComponent<PlayerStats>();
+        input       = GetComponent<PlayerInput>();
+        animator    = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSfx;
     }
 
     void OnEnable()
@@ -82,11 +88,12 @@ public class PlayerController : MonoBehaviour
     }
     void Shoot()
     {
-        if (!isBuilding)
+        if (!isBuilding && !upgrade.inMenu)
         {
             if (fireTimer > 0f) return;
             fireTimer = 1f / stats.AttackSpeed.Value;
             animator.SetBool("Attack", true);
+            audioSource.PlayOneShot(shootSfx);
         }
 
     }
@@ -117,6 +124,7 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
         rb.linearVelocity = dashDirection * dashSpeed;
+        audioSource.PlayOneShot(dashSfx);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         yield return new WaitForSeconds(dashCooldown);

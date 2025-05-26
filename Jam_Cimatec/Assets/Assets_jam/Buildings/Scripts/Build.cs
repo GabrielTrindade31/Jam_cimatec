@@ -20,7 +20,7 @@ public abstract class Build : MonoBehaviour
     public GameObject prefab;
     public string buildName;
     public BuildType buildType;
-    public int cost;
+    public long cost;
     public float currentLife;
     public Stat MaxLife;
     public bool canRotate = false;
@@ -51,7 +51,7 @@ public abstract class Build : MonoBehaviour
         healthBar.fillRect.gameObject.SetActive(currentLife > 0.01);
     }
 
-    public void TakenDamage(float amount)
+    public void TakeDamage(float amount)
     {
         currentLife -= amount;
         if (currentLife <= 0) DestroyBuild();

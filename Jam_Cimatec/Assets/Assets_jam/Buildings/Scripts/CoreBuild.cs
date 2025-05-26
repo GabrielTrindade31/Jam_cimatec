@@ -7,10 +7,10 @@ public class CoreBuild : Build
     public float regenCooldown;
     public Stat generationAmaunt;
     public float generationCooldown;
-    void Awake()
+
+    public override void Start()
     {
-        currentLife = MaxLife.Value;
-        tw = FindAnyObjectByType<TowerBuilder>();
+        base.Start();
         StartCoroutine(nameof(RegenerationLoop));
         StartCoroutine(nameof(GenerationLoop));
     }
@@ -22,6 +22,8 @@ public class CoreBuild : Build
 
     IEnumerator GenerationLoop()
     {
+        yield return new WaitForSeconds(generationCooldown);
+        tw = FindAnyObjectByType<TowerBuilder>();
         while (currentLife > 0)
         {
             yield return new WaitForSeconds(generationCooldown);
