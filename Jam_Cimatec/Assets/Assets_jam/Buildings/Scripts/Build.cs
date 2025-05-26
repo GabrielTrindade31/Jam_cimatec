@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public abstract class Build : MonoBehaviour
 {
     protected TowerBuilder tw;
     protected Slider healthBar;
+    protected TextMeshProUGUI nameTxt;
     public GameObject prefab;
     public string buildName;
     public BuildType buildType;
@@ -27,6 +29,8 @@ public abstract class Build : MonoBehaviour
     {
         currentLife = MaxLife.Value;
         healthBar = transform.GetComponentInChildren<Slider>(true);
+        nameTxt = transform.GetComponentInChildren<TextMeshProUGUI>(true);
+        nameTxt.text = buildName;
     }
 
     public void Initialize(TowerBuilder tw)
@@ -45,6 +49,21 @@ public abstract class Build : MonoBehaviour
         healthBar.maxValue = MaxLife.Value;
         healthBar.value = currentLife;
         healthBar.fillRect.gameObject.SetActive(currentLife > 0.01);
+    }
+
+    public void TakenDamage(float amount)
+    {
+        currentLife -= amount;
+        if (currentLife <= 0) DestroyBuild();
+    }
+
+    void DestroyBuild()
+    {
+        //Implementar alguma coisa aqui pra ela morrer
+        if (TryGetComponent<Collider2D>(out var x))
+            x.enabled = false;
+        
+        Destroy(gameObject, 20f);
     }
 
     public GameObject CreateGhostInstance(float rotation)
@@ -70,21 +89,6 @@ public abstract class Build : MonoBehaviour
         GameObject newBuild = Instantiate(prefab, position, rot);
         newBuild.GetComponent<Build>().Initialize(tw);
         return newBuild;
-    }
-    public virtual void TakenDamage(float amount)
-    {
-        currentLife -= amount;
-        currentLife = Mathf.Clamp(currentLife, 0f, MaxLife.Value);
-        Debug.Log($"[Build:{buildName}] currentLife = {currentLife}");
-        if (currentLife <= 0f)
-            DestroyBuild();
-    }
-
-    void DestroyBuild()
-    {
-        //Implementar alguma coisa aqui pra ela morrer
-        if (TryGetComponent<Collider2D>(out var col)) col.enabled = false;
-        Destroy(gameObject);
     }
 }
 

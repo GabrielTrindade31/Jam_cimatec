@@ -3,55 +3,39 @@ using UnityEngine;
 
 public class CoreBuild : Build
 {
-    [Header("Core Extras")]
-    public Stat regenAmount;
+    public Stat regenAmaunt;
     public float regenCooldown;
-    public Stat generationAmount;
+    public Stat generationAmaunt;
     public float generationCooldown;
-
-    Coroutine regenRoutine;
-    Coroutine genRoutine;
-
     void Awake()
     {
         currentLife = MaxLife.Value;
         tw = FindAnyObjectByType<TowerBuilder>();
-
-        regenRoutine = StartCoroutine(RegenerationLoop());
-        genRoutine   = StartCoroutine(GenerationLoop());
+        StartCoroutine(nameof(RegenerationLoop));
+        StartCoroutine(nameof(GenerationLoop));
     }
 
-    public override void TakenDamage(float amount)
+    void OnDestroy()
     {
-        base.TakenDamage(amount);
-
-        if (currentLife <= 0f)
-        {
-
-            if (regenRoutine != null) StopCoroutine(regenRoutine);
-            if (genRoutine   != null) StopCoroutine(genRoutine);
-            Destroy(gameObject);
-        }
+        StopAllCoroutines();
     }
 
     IEnumerator GenerationLoop()
     {
-        while (true)
+        while (currentLife > 0)
         {
             yield return new WaitForSeconds(generationCooldown);
-            if (currentLife <= 0f) yield break;
-            tw.cash += Mathf.CeilToInt(generationAmount.Value);
+            tw.cash += (int)Mathf.Ceil(generationAmaunt.Value);
         }
     }
 
     IEnumerator RegenerationLoop()
     {
-        while (true)
+        while (currentLife > 0)
         {
             yield return new WaitForSeconds(regenCooldown);
-            if (currentLife <= 0f) yield break;
-
-            currentLife = Mathf.Min(currentLife + regenAmount.Value, MaxLife.Value);
+            float increase = currentLife + regenAmaunt.Value;
+            currentLife = (increase > MaxLife.Value) ? MaxLife.Value : increase;
         }
     }
 }

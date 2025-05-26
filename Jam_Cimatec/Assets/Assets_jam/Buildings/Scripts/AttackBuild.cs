@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class AttackBuild : Build
 {
+    private Animator animator;
     public Stat damage;
     public Stat projectileSpeed;
     public float atkRadius;
@@ -16,6 +17,7 @@ public class AttackBuild : Build
     public override void Start()
     {
         base.Start();
+        animator = GetComponent<Animator>();
         StartCoroutine(nameof(AtkLoop));
     }
 
@@ -34,6 +36,12 @@ public class AttackBuild : Build
             {
                 Vector2 target = NearestTargetPos(targets);
                 Vector2 dir = ((Vector3)target - transform.position).normalized;
+
+                float angle = Mathf.Atan2(-dir.y, dir.x) * Mathf.Rad2Deg;
+                angle = (angle + 360f + 22.5f) % 360f;
+                int directionIndex = Mathf.FloorToInt(angle / (360f / 8));
+                animator.SetInteger("DirectionIndex", directionIndex);
+
                 Vector2 origin = (Vector2)transform.position + originRadius * dir;
                 var proj = Instantiate(projectile, origin, Quaternion.identity);
                 proj.GetComponent<Projectile>().Shoot(projectileSpeed.Value, dir, damage);
