@@ -5,9 +5,6 @@ public class PlayerSpawner : MonoBehaviour
 {
     public static PlayerSpawner Instance;
 
-    [Tooltip("Assign your Player prefab here")]
-    public GameObject playerPrefab;
-
     [Tooltip("Where the player should spawn (PowerCore)")]
     public Transform spawnPoint;
 
@@ -26,12 +23,6 @@ public class PlayerSpawner : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        if (currentPlayer != null) Destroy(currentPlayer);
-        currentPlayer = Instantiate(
-            playerPrefab,
-            spawnPoint.position,
-            spawnPoint.rotation
-        );
     }
 
     public void OnPlayerDeath()

@@ -46,6 +46,13 @@ public class SpawnEnemys : MonoBehaviour
         currentWave++;
         yield return new WaitForSeconds(timeBetweenWaves);
     }
-
+     public void ResetToStart()
+    {
+        StopAllCoroutines();
+        currentWave   = 1;
+        enemiesAlive  = 0;
+        isSpawning    = false;
+        startWave     = false;
+    }
     public void EnemyKilled() => enemiesAlive--;
 }

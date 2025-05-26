@@ -1,0 +1,24 @@
+diff a/Jam_Cimatec/Assets/Assets_jam/Buildings/Scripts/CoreBuild.cs b/Jam_Cimatec/Assets/Assets_jam/Buildings/Scripts/CoreBuild.cs	(rejected hunks)
+@@ -35,7 +35,22 @@
+         {
+             yield return new WaitForSeconds(regenCooldown);
+             float increase = currentLife + regenAmaunt.Value;
+             currentLife = (increase > MaxLife.Value) ? MaxLife.Value : increase;
+         }
+     }
++    protected override void Die()
++    {
++        // supondo que você tenha acesso ao cash atual:
++        int currentCash = FindAnyObjectByType<TowerBuilder>().cash;
++        GameOverManager.Instance.ShowGameOver(currentCash);
++        base.Die(); // destrói o Core
++    }
++     public void ResetLoops()
++    {
++        // pare loops antigos e inicie de novo
++        StopAllCoroutines();
++        StartCoroutine(RegenerationLoop());
++        StartCoroutine(GenerationLoop());
++    }   
++
+ }

@@ -18279,6 +18279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerCore
       objectReference: {fileID: 0}
+    - target: {fileID: 2644914477845071459, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6306279207760435875, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -18323,14 +18327,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7524459696947652338, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
+    - target: {fileID: 7487602494860899595, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
       propertyPath: safeMap
       value: 
       objectReference: {fileID: 1017864647}
-    - target: {fileID: 7524459696947652338, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
-      propertyPath: safeTile
-      value: 
-      objectReference: {fileID: 11400000, guid: 237ee874b9b756948a545a02b7d5f4fd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19266,7 +19266,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 1079061562}
   baseEnemies: 5
-  waveIncrement: 2
+  waveIncrement: 4
   spawnInterval: 1
   timeBetweenWaves: 5
   startWave: 0
@@ -20300,52 +20300,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &1148976010
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1148976012}
-  - component: {fileID: 1148976011}
-  m_Layer: 0
-  m_Name: SpawnPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1148976011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148976010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 986e8e1244af2cc418e493a9171000b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6774830895991904639, guid: 55b36773852c1f84fb986d6d53f9abee, type: 3}
-  spawnPoint: {fileID: 1841384027}
---- !u!4 &1148976012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148976010}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189046665
 GameObject:
   m_ObjectHideFlags: 0
@@ -22071,9 +22025,14 @@ MonoBehaviour:
   stat:
     BaseValue: 1
     ModifierValue: 0
---- !u!114 &1841384024 stripped
+--- !u!4 &1841384027 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6658241565991521186, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
+  m_PrefabInstance: {fileID: 961102812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1841384030 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7524459696947652338, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7487602494860899595, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
   m_PrefabInstance: {fileID: 961102812}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -22082,11 +22041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00497410f662ab4982b512480d41a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1841384027 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6658241565991521186, guid: ebbac470cbd38d64b989a0f79c74a8a3, type: 3}
-  m_PrefabInstance: {fileID: 961102812}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1874134240
 GameObject:
   m_ObjectHideFlags: 0
@@ -23354,7 +23308,7 @@ MonoBehaviour:
   firePoint: {fileID: 1608889161909204200}
   projectilePrefab: {fileID: 9017837834711182627, guid: c66709c7501ccca40a56a5b74a6122ca, type: 3}
   isBuilding: 0
-  safeZone: {fileID: 1841384024}
+  safeZone: {fileID: 1841384030}
   damageOutsidePerSecond: 5
 --- !u!95 &9142121975528714484
 Animator:
@@ -23390,5 +23344,4 @@ SceneRoots:
   - {fileID: 1079061562}
   - {fileID: 961102812}
   - {fileID: 1701317925}
-  - {fileID: 1148976012}
   - {fileID: 15492074888353618}
