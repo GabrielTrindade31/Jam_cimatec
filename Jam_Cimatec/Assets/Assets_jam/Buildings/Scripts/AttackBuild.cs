@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 [Serializable]
 public class AttackBuild : Build
 {
     private Animator animator;
+    private AudioSource audioSource;
     public Stat damage;
     public Stat projectileSpeed;
     public float atkRadius;
@@ -13,11 +15,14 @@ public class AttackBuild : Build
     [SerializeField] private float originRadius;
     public GameObject projectile;
     public LayerMask enemyLayer;
+    [SerializeField] private AudioClip shootSfx;
 
     public override void Start()
     {
         base.Start();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSfx;
         StartCoroutine(nameof(AtkLoop));
     }
 
@@ -45,6 +50,7 @@ public class AttackBuild : Build
                 Vector2 origin = (Vector2)transform.position + originRadius * dir;
                 var proj = Instantiate(projectile, origin, Quaternion.identity);
                 proj.GetComponent<Projectile>().Shoot(projectileSpeed.Value, dir, damage);
+                audioSource.Play();
             }
         }
     }

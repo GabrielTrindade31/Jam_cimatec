@@ -11,16 +11,17 @@ public class TowerBuilder : MonoBehaviour
     public Stat safeZoneRadius;
     [HideInInspector] public UpgradeUI upgradeUI;
     [SerializeField] private List<BuildEntry> buildSet = new();
-    [SerializeField] private TextMeshProUGUI textMesh;
+    [SerializeField] private TextMeshProUGUI cashText;
     public BuildType selectedBuildType;
     public int buildIndex;
-    public int cash;
+    public long cash;
     public float tunrPerClick = 22.5f;
     public float currentRotation;
 
     public Dictionary<BuildType, List<Build>> enabledBuilds;
     private readonly Dictionary<Vector2Int, GameObject> notEmptySpaces = new();
     private PlayerInput input;
+    public SafeZone safeZone;
     [HideInInspector] public PlayerController playerController;
     private GameObject currentGhost;
     private Build CurrentBuild => enabledBuilds[selectedBuildType][buildIndex];
@@ -31,8 +32,19 @@ public class TowerBuilder : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         playerController = GetComponent<PlayerController>();
-        upgradeUI = Object.FindFirstObjectByType<UpgradeUI>();
+        upgradeUI = FindFirstObjectByType<UpgradeUI>();
+        upgradeUI.Initialize(this);
         SetupBuilds();
+    }
+
+    void Start()
+    {
+        cashText = GameObject.FindWithTag("CashTxt").GetComponent<TextMeshProUGUI>();
+        tilemap = GameObject.FindWithTag("SafeZone").GetComponent<Tilemap>();
+        safeZone = GameObject.FindWithTag("PowerCore").GetComponent<SafeZone>();
+        playerController.safeZone = safeZone;
+        safeZone.safeMap = tilemap;
+        safeZone.SetRadius(safeZoneRadius.Value);
     }
 
     void SetupBuilds()
@@ -70,7 +82,7 @@ public class TowerBuilder : MonoBehaviour
 
     void Update()
     {
-        textMesh.text = $"Cash: R${cash},00";
+        cashText.text = $"Cash: R${cash},00";
 
         bool inBuildMode = playerController.isBuilding 
                         && (upgradeUI == null || !upgradeUI.inMenu);
