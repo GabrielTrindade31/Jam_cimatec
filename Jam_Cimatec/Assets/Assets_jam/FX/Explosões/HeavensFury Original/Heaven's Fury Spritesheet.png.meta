@@ -156,6 +156,71 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -634,7 +699,28 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Heaven's Fury Spritesheet_0: 1613679562388666933
+      Heaven's Fury Spritesheet_1: -7541044612893688013
+      Heaven's Fury Spritesheet_10: -3131062986691178985
+      Heaven's Fury Spritesheet_11: -2690810664409419544
+      Heaven's Fury Spritesheet_12: 8643726433467779310
+      Heaven's Fury Spritesheet_13: 488040183532669323
+      Heaven's Fury Spritesheet_14: 6369227935888042804
+      Heaven's Fury Spritesheet_15: 7512925274561587943
+      Heaven's Fury Spritesheet_16: -4602819587226154742
+      Heaven's Fury Spritesheet_17: -3345957726985657011
+      Heaven's Fury Spritesheet_18: 8510743177587944408
+      Heaven's Fury Spritesheet_19: -3050472165757639
+      Heaven's Fury Spritesheet_2: 9132954955808665102
+      Heaven's Fury Spritesheet_20: 8371497278814149206
+      Heaven's Fury Spritesheet_3: 105701529037176903
+      Heaven's Fury Spritesheet_4: 6579392338384028208
+      Heaven's Fury Spritesheet_5: -1806852210578976068
+      Heaven's Fury Spritesheet_6: -1711546452634087303
+      Heaven's Fury Spritesheet_7: 1268191799278592994
+      Heaven's Fury Spritesheet_8: 2737891122972383418
+      Heaven's Fury Spritesheet_9: -1850211107234946978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
