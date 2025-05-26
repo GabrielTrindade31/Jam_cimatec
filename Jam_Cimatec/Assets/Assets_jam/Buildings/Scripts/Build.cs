@@ -12,9 +12,11 @@ public enum BuildType
     CoreBuild
 }
 
+[RequireComponent(typeof(Animator))]
 public abstract class Build : MonoBehaviour
 {
     protected TowerBuilder tw;
+    protected Animator animator;
     protected Slider healthBar;
     protected TextMeshProUGUI nameTxt;
     public GameObject prefab;
@@ -28,6 +30,7 @@ public abstract class Build : MonoBehaviour
     public virtual void Start()
     {
         currentLife = MaxLife.Value;
+        animator = GetComponent<Animator>();
         healthBar = transform.GetComponentInChildren<Slider>(true);
         nameTxt = transform.GetComponentInChildren<TextMeshProUGUI>(true);
         nameTxt.text = buildName;
@@ -38,9 +41,8 @@ public abstract class Build : MonoBehaviour
         this.tw = tw;
     }
 
-    public void DeleteBuild()
+    public virtual void DeleteBuild()
     {
-        // Joga aqui um animator de morte
         tw.RemoveBuildFromMap(tw.World2Grid(transform.position));
     }
 
@@ -62,7 +64,7 @@ public abstract class Build : MonoBehaviour
         //Implementar alguma coisa aqui pra ela morrer
         if (TryGetComponent<Collider2D>(out var x))
             x.enabled = false;
-        
+
         Destroy(gameObject, 20f);
     }
 

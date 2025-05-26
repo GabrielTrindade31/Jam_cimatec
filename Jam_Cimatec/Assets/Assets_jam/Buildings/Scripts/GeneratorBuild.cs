@@ -17,6 +17,12 @@ public class GeneratorBuild : Build
         StopAllCoroutines();
     }
 
+    public override void DeleteBuild()
+    {
+        animator.SetTrigger("die");
+        base.DeleteBuild();
+    }
+
     IEnumerator GenerationLoop()
     {
         while (currentLife > 0)

@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 8425430053929437404}
   - component: {fileID: 1441106326687217224}
   - component: {fileID: 12742093929244588}
+  - component: {fileID: 8627088478964609770}
   m_Layer: 0
   m_Name: Generation Tier 1
   m_TagString: Tower
@@ -392,7 +393,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -2035105256428418344, guid: 3ac934a4f6693ca4b9b40601f55f1d13, type: 3}
+  m_Sprite: {fileID: -5262729862114650655, guid: e40f1c21f06663e4abfc9e64a105cd91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -428,6 +429,28 @@ MonoBehaviour:
     BaseValue: 1
     ModifierValue: 1
   generationCooldown: 1.7
+--- !u!95 &8627088478964609770
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326885442194680247}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c0f0737f96a0fd42bf322a452bb608f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7355843013026566102
 GameObject:
   m_ObjectHideFlags: 0

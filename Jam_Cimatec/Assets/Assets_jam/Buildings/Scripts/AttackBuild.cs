@@ -6,7 +6,6 @@ using UnityEngine;
 [Serializable]
 public class AttackBuild : Build
 {
-    private Animator animator;
     private AudioSource audioSource;
     public Stat damage;
     public Stat projectileSpeed;
@@ -20,7 +19,6 @@ public class AttackBuild : Build
     public override void Start()
     {
         base.Start();
-        animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = shootSfx;
         StartCoroutine(nameof(AtkLoop));
@@ -29,6 +27,12 @@ public class AttackBuild : Build
     void OnDestroy()
     {
         StopAllCoroutines();
+    }
+
+    public override void DeleteBuild()
+    {
+        animator.SetTrigger("die");
+        base.DeleteBuild();
     }
 
     IEnumerator AtkLoop()
