@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
                     {
                         var build = target.GetComponent<Build>();
                         if (build != null)
-                            build.TakenDamage(dmg);
+                            build.TakeDamage(dmg);
                     }
 
                     attackTimer = attackInterval;
