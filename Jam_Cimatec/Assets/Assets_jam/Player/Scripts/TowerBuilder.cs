@@ -31,6 +31,7 @@ public class TowerBuilder : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         playerController = GetComponent<PlayerController>();
+        upgradeUI = Object.FindFirstObjectByType<UpgradeUI>();
         SetupBuilds();
     }
 
@@ -70,7 +71,11 @@ public class TowerBuilder : MonoBehaviour
     void Update()
     {
         textMesh.text = $"Cash: R${cash},00";
-        if (playerController.isBuilding && !upgradeUI.inMenu)
+
+        bool inBuildMode = playerController.isBuilding 
+                        && (upgradeUI == null || !upgradeUI.inMenu);
+
+        if (inBuildMode)
             UpdateGhostPosition();
         else
             currentGhost = null;

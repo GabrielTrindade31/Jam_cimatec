@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
     private float fireTimer;
     [HideInInspector] public bool isBuilding = false;
+    [Header("Zona Segura")]
+    public SafeZone safeZone;                // arraste seu componente SafeZone aqui
+    public float damageOutsidePerSecond = 5f;
 
     void Awake()
     {
@@ -55,13 +58,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (stats.isDead) return;
         AimAtMouse();
         UpdateAnimation();
         if (fireTimer > 0f) fireTimer -= Time.deltaTime;
+        CheckSafeZone();
     }
 
     void FixedUpdate()
     {
+        if (stats.isDead) return;
         if (!isDashing)
             rb.linearVelocity = moveInput * moveSpeed;
     }
@@ -116,7 +122,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-     void UpdateAnimation()
+    void UpdateAnimation()
     {
         if (moveInput != Vector2.zero && animator.GetBool("Attack") == false)
         {
@@ -131,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 else animator.Play("WalkDown");
             }
         }
-        else if(animator.GetBool("Attack") == false)
+        else if (animator.GetBool("Attack") == false)
         {
             var mpos = Mouse.current.position.ReadValue();
             var world = Camera.main.ScreenToWorldPoint(mpos);
@@ -146,6 +152,21 @@ public class PlayerController : MonoBehaviour
                 if (aimDir.y > 0) animator.Play("IdleUp");
                 else animator.Play("IdleDown");
             }
+        }
+    }
+     void CheckSafeZone()
+    {
+        if (safeZone == null) return;
+
+        float dist = Vector2.Distance(
+            transform.position,
+            safeZone.transform.position
+        );
+
+        if (dist > safeZone.radius)
+        {
+            // está fora da safe zone: aplica dano contínuo
+            stats.TakeDamage(damageOutsidePerSecond * Time.deltaTime);
         }
     }
 }
