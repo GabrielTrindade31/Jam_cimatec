@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Heaven's Fury VFX_Animation 1_08_0: -2943539246354230702
+      Heaven's Fury VFX_Animation 1_08_1: -5751590319019052611
+      Heaven's Fury VFX_Animation 1_08_2: -8783568408148673053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
