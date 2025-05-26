@@ -19,6 +19,11 @@ public class CoreBuild : Build
     {
         StopAllCoroutines();
     }
+    public override void DeleteBuild()
+    {
+        animator.SetTrigger("die");
+        base.DeleteBuild();
+    }
 
     IEnumerator GenerationLoop()
     {
