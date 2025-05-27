@@ -135,6 +135,7 @@ public class Enemy1 : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+         Debug.Log($"[Enemy2] Took {amount} damage. CurrentHealth = {currentHealth}");
         currentHealth -= amount;
         if (currentHealth <= 0f) Die();
     }
