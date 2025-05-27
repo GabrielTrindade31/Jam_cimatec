@@ -45,7 +45,7 @@ public abstract class Build : MonoBehaviour
         tw.RemoveBuildFromMap(tw.World2Grid(transform.position));
     }
 
-    void Update()
+    public virtual void Update()
     {
         healthBar.maxValue = MaxLife.Value;
         healthBar.value = currentLife;

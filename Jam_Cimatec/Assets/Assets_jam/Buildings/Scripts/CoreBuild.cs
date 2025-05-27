@@ -25,6 +25,13 @@ public class CoreBuild : Build
         base.DeleteBuild();
     }
 
+    public override void Update()
+    {
+        base.Update();
+        if (currentLife <= 0)
+            GameOverManager.Instance.ShowGameOver(tw.cash);
+    }
+
     IEnumerator GenerationLoop()
     {
         yield return new WaitForSeconds(generationCooldown);

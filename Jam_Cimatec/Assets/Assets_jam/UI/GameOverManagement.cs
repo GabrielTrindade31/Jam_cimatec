@@ -10,7 +10,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private GameObject hudPanel;
 
     // guarda metade do cash entre recarregamentos
-    public static int SavedCash = 0;
+    public static long SavedCash = 0;
 
     void Awake()
     {
@@ -27,7 +27,7 @@ public class GameOverManager : MonoBehaviour
     /// <summary>
     /// Chame quando o Core morrer.
     /// </summary>
-    public void ShowGameOver(int currentCash)
+    public void ShowGameOver(long currentCash)
     {
         // pausa
         Time.timeScale = 0f;
