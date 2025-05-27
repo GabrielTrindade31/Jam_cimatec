@@ -419,15 +419,15 @@ MonoBehaviour:
   prefab: {fileID: 7326885442194680247}
   buildName: "Gerador B\xE1sico"
   buildType: 1
-  cost: 20
+  cost: 60
   currentLife: 0
   MaxLife:
-    BaseValue: 30
+    BaseValue: 40
     ModifierValue: 0
   canRotate: 0
   generationAmaunt:
     BaseValue: 1
-    ModifierValue: 1
+    ModifierValue: 0
   generationCooldown: 1.7
 --- !u!95 &8627088478964609770
 Animator:

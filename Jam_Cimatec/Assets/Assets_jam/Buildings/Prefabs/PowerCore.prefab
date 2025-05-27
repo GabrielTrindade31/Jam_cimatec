@@ -211,7 +211,7 @@ MonoBehaviour:
   radius: 5
   safeMap: {fileID: 0}
   safeTile: {fileID: 11400000, guid: 237ee874b9b756948a545a02b7d5f4fd, type: 2}
-  overlayAlpha: 0.8
+  overlayAlpha: 0.3
 --- !u!61 &3705480860876138840
 BoxCollider2D:
   m_ObjectHideFlags: 0

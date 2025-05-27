@@ -10,6 +10,7 @@ TagManager:
   - PowerCore
   - CashTxt
   - SafeZone
+  - SpawnEnemies
   layers:
   - Default
   - TransparentFX

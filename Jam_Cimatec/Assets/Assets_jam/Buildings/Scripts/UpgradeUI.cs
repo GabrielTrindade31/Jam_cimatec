@@ -12,7 +12,7 @@ public class UpgradeUI : MonoBehaviour
     private PlayerStats playerStats;
     public bool inMenu;
     public bool isEnabled = false;
-    public GameObject inGameCash;
+    public HUDmanager hUDmanager;
     public GameObject upgradeUIObject;
     [SerializeField] Color cheapColor;
     [SerializeField] Color expensiveColor;
@@ -62,7 +62,7 @@ public class UpgradeUI : MonoBehaviour
     {
         if (!isEnabled) return;
         upgradeUIObject.SetActive(inMenu);
-        inGameCash.SetActive(!inMenu);
+        hUDmanager.gameObject.SetActive(!inMenu);
         ShowStat();
     }
 
@@ -80,6 +80,7 @@ public class UpgradeUI : MonoBehaviour
 
     public void UpgradeStat(int index)
     {
+        print("Upgrade stat whith index = " + index);
         if (towerBuilder.cash < currentButton.cost) return;
         towerBuilder.cash -= currentButton.cost;
         currentButton.cost *= 2;

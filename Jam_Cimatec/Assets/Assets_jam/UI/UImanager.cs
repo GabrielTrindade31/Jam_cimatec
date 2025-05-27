@@ -9,6 +9,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [Tooltip("Painel de créditos")]
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject hudPanel;
 
     void Awake()
     {
@@ -16,6 +17,7 @@ public class MainMenuController : MonoBehaviour
         menuPanel.SetActive(true);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
+        hudPanel.SetActive(false);
         Time.timeScale = 0f;
     }
 
@@ -28,6 +30,7 @@ public class MainMenuController : MonoBehaviour
         menuPanel.SetActive(false);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
+        hudPanel.SetActive(true);
         Time.timeScale = 1f;
     }
 
