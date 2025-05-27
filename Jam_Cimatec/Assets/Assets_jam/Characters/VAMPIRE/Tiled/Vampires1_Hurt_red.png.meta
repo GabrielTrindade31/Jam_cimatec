@@ -474,7 +474,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vampires1_Hurt_red_0: 4317210422931815264
+      Vampires1_Hurt_red_1: -9163482945097902774
+      Vampires1_Hurt_red_10: -1207295399533333344
+      Vampires1_Hurt_red_11: -4110619194739591632
+      Vampires1_Hurt_red_2: -1976220645957324215
+      Vampires1_Hurt_red_3: 786057891815865104
+      Vampires1_Hurt_red_4: 2083585903022463789
+      Vampires1_Hurt_red_5: 295374527585250809
+      Vampires1_Hurt_red_6: -2210178049453179761
+      Vampires1_Hurt_red_7: 3272157492169983980
+      Vampires1_Hurt_red_8: 6847353679539304621
+      Vampires1_Hurt_red_9: 7133582053942244391
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

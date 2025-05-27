@@ -774,7 +774,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vampires3_Walk_body_0: 4849145073200020840
+      Vampires3_Walk_body_1: -9058353230910557100
+      Vampires3_Walk_body_10: -5638199249489049330
+      Vampires3_Walk_body_11: 2682637397635075101
+      Vampires3_Walk_body_12: -7101774597270215039
+      Vampires3_Walk_body_13: -4595589121143294648
+      Vampires3_Walk_body_14: -5210609659872022311
+      Vampires3_Walk_body_15: -6333533482115428451
+      Vampires3_Walk_body_16: -492110548732079513
+      Vampires3_Walk_body_17: 9161210848502757250
+      Vampires3_Walk_body_18: -3481650431499963386
+      Vampires3_Walk_body_19: 3528105554735103480
+      Vampires3_Walk_body_2: 5941958543791161464
+      Vampires3_Walk_body_20: -5957114231418416766
+      Vampires3_Walk_body_21: -2912033245554080441
+      Vampires3_Walk_body_22: -8872487935823771847
+      Vampires3_Walk_body_23: -420640763975810416
+      Vampires3_Walk_body_3: 3746255244841439486
+      Vampires3_Walk_body_4: 6567992509415233899
+      Vampires3_Walk_body_5: 8451056254907961307
+      Vampires3_Walk_body_6: -4178963017932334091
+      Vampires3_Walk_body_7: -4527824328235341496
+      Vampires3_Walk_body_8: 4313752371407257651
+      Vampires3_Walk_body_9: -3039892683768813918
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

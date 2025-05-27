@@ -11,14 +11,16 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private GameObject hudPanel;
     [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject tutorial;
 
     void Awake()
     {
         // Na cena inicial, só o menu principal está visível e o jogo fica pausado.
         menuPanel.SetActive(true);
-        optionsPanel.SetActive(false);
+        optionsPanel.SetActive(true);
         creditsPanel.SetActive(true);
         hudPanel.SetActive(false);
+        tutorial.SetActive(false);
         Time.timeScale = 0f;
     }
 
@@ -33,6 +35,7 @@ public class MainMenuController : MonoBehaviour
         creditsPanel.SetActive(false);
         hudPanel.SetActive(true);
         credits.SetActive(false);
+        tutorial.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -41,10 +44,11 @@ public class MainMenuController : MonoBehaviour
     /// </summary>
     public void OnOptionsButtonPressed()
     {
-        menuPanel.SetActive(false);
-        optionsPanel.SetActive(true);
+        menuPanel.SetActive(true);
+        optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         credits.SetActive(false);
+        tutorial.SetActive(true);
     }
 
     /// <summary>
@@ -57,6 +61,7 @@ public class MainMenuController : MonoBehaviour
         creditsPanel.SetActive(true);
         credits.SetActive(true);
         hudPanel.SetActive(false);
+        tutorial.SetActive(false);
     }
 
     /// <summary>
@@ -66,9 +71,10 @@ public class MainMenuController : MonoBehaviour
     public void OnBackToMainButtonPressed()
     {
         menuPanel.SetActive(true);
-        optionsPanel.SetActive(false);
+        optionsPanel.SetActive(true);
         creditsPanel.SetActive(true);
         credits.SetActive(false);
+        tutorial.SetActive(false);
     }
 
     /// <summary>
@@ -82,8 +88,8 @@ public class MainMenuController : MonoBehaviour
     public void ShowStart()
     {
         menuPanel.SetActive(true);
-        optionsPanel.SetActive(false);
-        creditsPanel.SetActive(false);
+        optionsPanel.SetActive(true);
+        creditsPanel.SetActive(true);
         Time.timeScale = 0f;
     }
 }

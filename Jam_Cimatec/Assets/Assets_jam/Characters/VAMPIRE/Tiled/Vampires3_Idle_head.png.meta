@@ -774,7 +774,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vampires3_Idle_head_0: -8284241154070651647
+      Vampires3_Idle_head_1: 3103947670391281105
+      Vampires3_Idle_head_10: 7181037804342429632
+      Vampires3_Idle_head_11: -6698587458199888039
+      Vampires3_Idle_head_12: 7010327330004331751
+      Vampires3_Idle_head_13: 514345585051553066
+      Vampires3_Idle_head_14: 2894244637401825775
+      Vampires3_Idle_head_15: -6414714185884404320
+      Vampires3_Idle_head_16: 9091716860933166043
+      Vampires3_Idle_head_17: -2146947942028253489
+      Vampires3_Idle_head_18: -7542443481175538367
+      Vampires3_Idle_head_19: -7973796399091049860
+      Vampires3_Idle_head_2: -3799332232513663944
+      Vampires3_Idle_head_20: 4994281053156981603
+      Vampires3_Idle_head_21: 5074374315628290203
+      Vampires3_Idle_head_22: -4964099367589274350
+      Vampires3_Idle_head_23: -8648024145029643948
+      Vampires3_Idle_head_3: -4301678969004268442
+      Vampires3_Idle_head_4: 9006930914825993118
+      Vampires3_Idle_head_5: -6454615807580171989
+      Vampires3_Idle_head_6: 5541268818345754068
+      Vampires3_Idle_head_7: -5635385495060832908
+      Vampires3_Idle_head_8: -3957378464178929682
+      Vampires3_Idle_head_9: -2259078705522826332
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
