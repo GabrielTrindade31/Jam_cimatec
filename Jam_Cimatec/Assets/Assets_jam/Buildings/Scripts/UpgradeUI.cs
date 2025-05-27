@@ -87,9 +87,18 @@ public class UpgradeUI : MonoBehaviour
 
         if (index <= 3 || index == 11)
         {
-            currentButton.stat.AddModifier(currentButton.defaultIncrease);
             if (index == 11)
-                towerBuilder.safeZone.SetRadius(towerBuilder.safeZoneRadius.Value);
+            {
+                if (towerBuilder.safeZoneRadius.Value <= 35)
+                {
+                    currentButton.stat.AddModifier(currentButton.defaultIncrease);
+                    towerBuilder.safeZone.SetRadius(towerBuilder.safeZoneRadius.Value);
+                }
+                else
+                    upgradesInfos[11].gameObject.SetActive(false);
+            }
+            else
+                currentButton.stat.AddModifier(currentButton.defaultIncrease);
         }
         else
             UpgradeTowers(index);
