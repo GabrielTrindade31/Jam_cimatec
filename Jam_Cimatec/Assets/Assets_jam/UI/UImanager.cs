@@ -9,13 +9,16 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [Tooltip("Painel de créditos")]
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject hudPanel;
+    [SerializeField] private GameObject credits;
 
     void Awake()
     {
         // Na cena inicial, só o menu principal está visível e o jogo fica pausado.
         menuPanel.SetActive(true);
         optionsPanel.SetActive(false);
-        creditsPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+        hudPanel.SetActive(false);
         Time.timeScale = 0f;
     }
 
@@ -28,6 +31,8 @@ public class MainMenuController : MonoBehaviour
         menuPanel.SetActive(false);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
+        hudPanel.SetActive(true);
+        credits.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -39,6 +44,7 @@ public class MainMenuController : MonoBehaviour
         menuPanel.SetActive(false);
         optionsPanel.SetActive(true);
         creditsPanel.SetActive(false);
+        credits.SetActive(false);
     }
 
     /// <summary>
@@ -46,9 +52,11 @@ public class MainMenuController : MonoBehaviour
     /// </summary>
     public void OnCreditsButtonPressed()
     {
-        menuPanel.SetActive(false);
+        menuPanel.SetActive(true);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(true);
+        credits.SetActive(true);
+        hudPanel.SetActive(false);
     }
 
     /// <summary>
@@ -59,7 +67,8 @@ public class MainMenuController : MonoBehaviour
     {
         menuPanel.SetActive(true);
         optionsPanel.SetActive(false);
-        creditsPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+        credits.SetActive(false);
     }
 
     /// <summary>

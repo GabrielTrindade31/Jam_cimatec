@@ -223,7 +223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.012, y: -0.18}
+  m_AnchoredPosition: {x: 0.012, y: -0.102}
   m_SizeDelta: {x: 3.0056, y: 2.9648}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4349089831220625277
@@ -601,6 +601,8 @@ GameObject:
   - component: {fileID: 4240935633299664750}
   - component: {fileID: 6731382303851482625}
   - component: {fileID: 1188463002585873843}
+  - component: {fileID: 6360084029049242936}
+  - component: {fileID: 2219953059098124810}
   m_Layer: 0
   m_Name: Wall Basic
   m_TagString: Tower
@@ -668,7 +670,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -3736867644340484305, guid: 3ac934a4f6693ca4b9b40601f55f1d13, type: 3}
+  m_Sprite: {fileID: -3997193694794566380, guid: 8848ce6a9df9bab4e84a6954c1028ffe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -697,13 +699,80 @@ MonoBehaviour:
   cost: 40
   currentLife: 0
   MaxLife:
-    BaseValue: 500
+    BaseValue: 300
     ModifierValue: 0
-  canRotate: 1
   regenAmaunt:
     BaseValue: 1.5
     ModifierValue: 0
   regenCooldown: 1
+--- !u!95 &6360084029049242936
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485298657243034031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &2219953059098124810
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485298657243034031}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.000000029802322, y: -0.052426547}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5208333, y: 0.71875}
+    newSize: {x: 0.59, y: 0.58}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.50012594, y: 0.58299595}
+  m_EdgeRadius: 0
 --- !u!1 &7903550941861241814
 GameObject:
   m_ObjectHideFlags: 0

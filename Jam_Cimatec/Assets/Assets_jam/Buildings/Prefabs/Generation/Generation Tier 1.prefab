@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.49}
+  m_AnchoredPosition: {x: 0, y: -1.44}
   m_SizeDelta: {x: 105.87, y: 22.049}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5457388553914508189
@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 1441106326687217224}
   - component: {fileID: 12742093929244588}
   - component: {fileID: 8627088478964609770}
+  - component: {fileID: 4011940012842879928}
   m_Layer: 0
   m_Name: Generation Tier 1
   m_TagString: Tower
@@ -419,15 +420,14 @@ MonoBehaviour:
   prefab: {fileID: 7326885442194680247}
   buildName: "Gerador B\xE1sico"
   buildType: 1
-  cost: 20
+  cost: 60
   currentLife: 0
   MaxLife:
-    BaseValue: 30
+    BaseValue: 40
     ModifierValue: 0
-  canRotate: 0
   generationAmaunt:
     BaseValue: 1
-    ModifierValue: 1
+    ModifierValue: 0
   generationCooldown: 1.7
 --- !u!95 &8627088478964609770
 Animator:
@@ -451,6 +451,52 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &4011940012842879928
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326885442194680247}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.0037713274, y: -0.07844436}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4032258, y: 0.5483871}
+    newSize: {x: 0.33, y: 0.55}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.3785439, y: 0.3838781}
+  m_EdgeRadius: 0
 --- !u!1 &7355843013026566102
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +598,7 @@ RectTransform:
   m_GameObject: {fileID: 7601013113407994520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.019877777, y: 0.035249926, z: 0.026503703}
+  m_LocalScale: {x: 0.018612755, y: 0.03300662, z: 0.024817007}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 230969385709771447}
@@ -562,7 +608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000042915, y: 1.65}
+  m_AnchoredPosition: {x: -0.00048828, y: 1.51}
   m_SizeDelta: {x: 160, y: 13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5787329679941339398

@@ -25,7 +25,6 @@ public abstract class Build : MonoBehaviour
     public long cost;
     public float currentLife;
     public Stat MaxLife;
-    public bool canRotate = false;
 
     public virtual void Start()
     {
@@ -70,7 +69,7 @@ public abstract class Build : MonoBehaviour
 
     public GameObject CreateGhostInstance(float rotation)
     {
-        Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
+        Quaternion rot = Quaternion.identity;
         GameObject ghost = Instantiate(prefab, Vector3.zero, rot);
 
         foreach (var comp in ghost.GetComponentsInChildren<Collider2D>()) //Remove as colisões do fantasma
@@ -87,7 +86,7 @@ public abstract class Build : MonoBehaviour
 
     public GameObject BuildIn(Vector3 position, float rotation, TowerBuilder tw)
     {
-        Quaternion rot = canRotate ? Quaternion.Euler(0, 0, rotation) : Quaternion.identity;
+        Quaternion rot = Quaternion.identity;
         GameObject newBuild = Instantiate(prefab, position, rot);
         newBuild.GetComponent<Build>().Initialize(tw);
         return newBuild;

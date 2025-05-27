@@ -11,7 +11,6 @@ public class TowerBuilder : MonoBehaviour
     public Stat safeZoneRadius;
     [HideInInspector] public UpgradeUI upgradeUI;
     [SerializeField] private List<BuildEntry> buildSet = new();
-    [SerializeField] private TextMeshProUGUI cashText;
     public BuildType selectedBuildType;
     public int buildIndex;
     public long cash;
@@ -25,6 +24,7 @@ public class TowerBuilder : MonoBehaviour
     [HideInInspector] public PlayerController playerController;
     private GameObject currentGhost;
     private Build CurrentBuild => enabledBuilds[selectedBuildType][buildIndex];
+    [HideInInspector] public HUDmanager hUDmanager;
 
     private float lastScrollTime;
     private readonly float scrollCooldown = 0.15f;
@@ -39,7 +39,6 @@ public class TowerBuilder : MonoBehaviour
 
     void Start()
     {
-        cashText = GameObject.FindWithTag("CashTxt").GetComponent<TextMeshProUGUI>();
         tilemap = GameObject.FindWithTag("SafeZone").GetComponent<Tilemap>();
         safeZone = GameObject.FindWithTag("PowerCore").GetComponent<SafeZone>();
         playerController.safeZone = safeZone;
@@ -58,6 +57,11 @@ public class TowerBuilder : MonoBehaviour
 
             enabledBuilds[entry.buildType].AddRange(entry.constructions);
         }
+    }
+
+    public void SetupHUD(HUDmanager hUDmanager)
+    {
+        this.hUDmanager = hUDmanager;
     }
 
     void OnEnable()
@@ -82,8 +86,6 @@ public class TowerBuilder : MonoBehaviour
 
     void Update()
     {
-        cashText.text = $"Cash: R${cash},00";
-
         bool inBuildMode = playerController.isBuilding 
                         && (upgradeUI == null || !upgradeUI.inMenu);
 
@@ -203,10 +205,7 @@ public class TowerBuilder : MonoBehaviour
         Vector3 ghostPos = Grid2World(gridPos);
 
         currentGhost.transform.position = ghostPos;
-        if (CurrentBuild.canRotate)
-            currentGhost.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
-        else
-            currentGhost.transform.rotation = Quaternion.identity;
+        currentGhost.transform.rotation = Quaternion.identity;
     }
 
     public Vector2Int World2Grid(Vector3 worldPos)
@@ -257,7 +256,7 @@ public class TowerBuilder : MonoBehaviour
             if (finalPosition.magnitude > safeZoneRadius.Value) return;
 
             cash -= CurrentBuild.cost;
-            float buildRotation = CurrentBuild.canRotate ? currentRotation : 0f;
+            float buildRotation = 0f;
             GameObject newTower = CurrentBuild.BuildIn(finalPosition, buildRotation, this);
             notEmptySpaces[gridPos] = newTower;
         }
