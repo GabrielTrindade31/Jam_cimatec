@@ -20410,14 +20410,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f919f74345f5f094395052fda95b2713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2744799584551158844, guid: 0eb8f86f3c9891b4ba240aac9332beb7, type: 3}
-  spawnPoints:
-  - {fileID: 1079061562}
-  baseEnemies: 5
-  waveIncrement: 4
+  enemyConfigs:
+  - prefab: {fileID: 2744799584551158844, guid: ef712d91e4fa4fb47b67b87f2a6c1a8a, type: 3}
+    startWave: 0
+    baseCount: 3
+    incrementPerWave: 1
+  - prefab: {fileID: 2744799584551158844, guid: 0eb8f86f3c9891b4ba240aac9332beb7, type: 3}
+    startWave: 5
+    baseCount: 2
+    incrementPerWave: 1
+  - prefab: {fileID: 2744799584551158844, guid: 8ae1b3182c4eff247ae877d7daeb6299, type: 3}
+    startWave: 10
+    baseCount: 1
+    incrementPerWave: 1
   spawnInterval: 1
   timeBetweenWaves: 5
   startWave: 0
+  spawnPoints:
+  - {fileID: 1079061562}
 --- !u!4 &1079061562
 Transform:
   m_ObjectHideFlags: 0
@@ -24933,7 +24943,7 @@ Transform:
   m_GameObject: {fileID: 6774830896804782624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.96, y: 0.02, z: 0}
+  m_LocalPosition: {x: -2.638, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -25023,7 +25033,7 @@ Transform:
   m_GameObject: {fileID: 7225024721841304923}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.62, y: 0, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25119,7 +25129,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 3790629738752367944, guid: bc76944b6acfdce40970bc9ea5f5f21a, type: 3}
+  m_Sprite: {fileID: 6996498247557233406, guid: f6a2fff54c171044b891041fa96626d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -25323,7 +25333,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.375, y: 1.6875}
+    oldSize: {x: 1.0625, y: 1.75}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25395,7 +25405,7 @@ MonoBehaviour:
   dashSpeed: 12
   dashDuration: 0.2
   dashCooldown: 1
-  animator: {fileID: 0}
+  animator: {fileID: 9142121975528714484}
   firePoint: {fileID: 1608889161909204200}
   projectilePrefab: {fileID: 9017837834711182627, guid: c66709c7501ccca40a56a5b74a6122ca, type: 3}
   isBuilding: 0

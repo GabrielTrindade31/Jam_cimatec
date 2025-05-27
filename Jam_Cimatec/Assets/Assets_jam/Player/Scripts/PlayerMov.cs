@@ -31,10 +31,12 @@ public class PlayerController : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private float fireTimer;
+    private bool isAttacking;
     [HideInInspector] public bool isBuilding = false;
     [Header("Zona Segura")]
     public SafeZone safeZone;                // arraste seu componente SafeZone aqui
     public float damageOutsidePerSecond = 5f;
+    private Vector2 lastAimDir;
 
     void Awake()
     {
@@ -65,10 +67,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (stats.isDead) return;
-        AimAtMouse();
-        UpdateAnimation();
-        if (fireTimer > 0f) fireTimer -= Time.deltaTime;
-        CheckSafeZone();
+         AimAtMouse();
+
+         if (!isAttacking)
+             UpdateAnimation();
+
+         if (fireTimer > 0f) fireTimer -= Time.deltaTime;
+         CheckSafeZone();
     }
 
     void FixedUpdate()
@@ -79,22 +84,33 @@ public class PlayerController : MonoBehaviour
     }
 
     void AimAtMouse()
-    {
-        Vector2 mouseScreen = Mouse.current.position.ReadValue();
-        Vector3 world       = Camera.main.ScreenToWorldPoint(mouseScreen);
-        Vector2 aimDir      = (world - transform.position).normalized;
+     {
+         Vector2 mouseScreen = Mouse.current.position.ReadValue();
+         Vector3 world       = Camera.main.ScreenToWorldPoint(mouseScreen);
+         Vector2 aimDir      = (world - transform.position).normalized;
 
-        firePoint.up = aimDir;
-    }
+         firePoint.up = aimDir;
+
+        lastAimDir = aimDir;
+     }
     void Shoot()
     {
-        if (!isBuilding && !upgrade.inMenu)
-        {
-            if (fireTimer > 0f) return;
-            fireTimer = 1f / stats.AttackSpeed.Value;
-            animator.SetBool("Attack", true);
-            audioSource.PlayOneShot(shootSfx);
-        }
+        if (isBuilding || upgrade.inMenu) return;
+       if (fireTimer > 0f)        return;
+       fireTimer = 1f / stats.AttackSpeed.Value;
+        audioSource.PlayOneShot(shootSfx);
+        isAttacking = true;
+       // choose and play the correct attack animation
+       if (Mathf.Abs(lastAimDir.x) > Mathf.Abs(lastAimDir.y))
+       {
+           if (lastAimDir.x > 0) animator.Play("AttackRight");
+           else                   animator.Play("AttackLeft");
+       }
+       else
+       {
+           if (lastAimDir.y > 0) animator.Play("AttackUp");
+           else                   animator.Play("AttackDown");
+       }
 
     }
     public void SpawnProjectile()
@@ -102,7 +118,7 @@ public class PlayerController : MonoBehaviour
         var p = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         if (p.TryGetComponent<Bullet>(out var b))
             b.Init(stats.Damage.Value);
-        animator.SetBool("Attack", false);
+        isAttacking = false;
     }
 
     public void SetUpUpgradeUI(UpgradeUI x)
@@ -132,6 +148,7 @@ public class PlayerController : MonoBehaviour
     }
     void UpdateAnimation()
     {
+        if (isAttacking) return;
         if (moveInput != Vector2.zero && animator.GetBool("Attack") == false)
         {
             if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
@@ -162,7 +179,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-     void CheckSafeZone()
+    void CheckSafeZone()
     {
         if (safeZone == null) return;
 
@@ -175,6 +192,33 @@ public class PlayerController : MonoBehaviour
         {
             // está fora da safe zone: aplica dano contínuo
             stats.TakeDamage(damageOutsidePerSecond * Time.deltaTime);
+        }
+    }
+    public void FlashRed()
+    {
+        StartCoroutine(FlashCoroutine());
+    }
+    IEnumerator FlashCoroutine()
+    {
+        // pega todos os sprites no jogador (e crianças)
+        var rends = GetComponentsInChildren<SpriteRenderer>();
+        // quantas vezes pisca
+        int flashes = 2;
+        // duração de cada cor
+        float onTime  = 0.5f;
+        float offTime = 0.5f;
+
+        for (int i = 0; i < flashes; i++)
+        {
+            // vermelho
+            foreach (var r in rends)
+                r.color = Color.red;
+            yield return new WaitForSeconds(onTime);
+
+            // volta ao normal
+            foreach (var r in rends)
+                r.color = Color.white;
+            yield return new WaitForSeconds(offTime);
         }
     }
 }

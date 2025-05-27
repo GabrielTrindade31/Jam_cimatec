@@ -30,6 +30,9 @@ public class PlayerStats : MonoBehaviour
     {
         CurrentHealth -= amount;
         Debug.Log($"[PlayerStats] Took {amount} damage. CurrentHealth = {CurrentHealth}");
+         var ctrl = GetComponent<PlayerController>();
+        if (ctrl != null)
+        ctrl.FlashRed();
         if (CurrentHealth <= 0f)
             Die();
     }

@@ -10,17 +10,19 @@ public class Enemy : MonoBehaviour
     public float attackInterval = 1f;
     public float navSpeed       = 3f;
 
-    private float      currentHealth;
-    private float      attackTimer;
+    private float        currentHealth;
+    private float        attackTimer;
     private NavMeshAgent agent;
     private Transform    powerCore;
     private Transform    player;
+    private Animator     animator;
 
     void Start()
     {
         currentHealth = maxHealth;
+        agent         = GetComponent<NavMeshAgent>();
+        animator      = GetComponent<Animator>();
 
-        agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis   = false;
         agent.updateRotation = false;
         agent.speed          = navSpeed;
@@ -34,57 +36,43 @@ public class Enemy : MonoBehaviour
     {
         attackTimer -= Time.deltaTime;
 
+        // 1) escolhe o alvo
         Transform target = null;
         float   bestDist = visionRange;
-        var hits = Physics2D.OverlapCircleAll(transform.position, visionRange);
-
-        // busca torre
-        foreach (var hit in hits)
+        foreach (var hit in Physics2D.OverlapCircleAll(transform.position, visionRange))
         {
             if (hit.CompareTag("Tower"))
             {
                 float d = Vector2.Distance(transform.position, hit.transform.position);
-                if (d < bestDist)
-                {
-                    bestDist = d;
-                    target   = hit.transform;
-                }
+                if (d < bestDist) { bestDist = d; target = hit.transform; }
             }
         }
-
-        // se não achou torre, busca player
         if (target == null && player != null)
         {
             float pd = Vector2.Distance(transform.position, player.position);
-            if (pd <= visionRange)
-            {
-                bestDist = pd;
-                target   = player;
-            }
+            if (pd <= visionRange) { bestDist = pd; target = player; }
         }
-
-        // se nem player, vê se o core está no alcance de visão
         if (target == null && powerCore != null)
         {
             float cd = Vector2.Distance(transform.position, powerCore.position);
-            if (cd <= visionRange)
-            {
-                bestDist = cd;
-                target   = powerCore;
-            }
+            if (cd <= visionRange) { bestDist = cd; target = powerCore; }
         }
 
-        // se tem alvo
+        // 2) persegue ou ataca
         if (target != null)
         {
             float dist = Vector2.Distance(transform.position, target.position);
+            Vector2 dir = (target.position - transform.position).normalized;
+
             if (dist <= attackRange)
             {
                 agent.isStopped = true;
+                PlayAttackAnimation(dir);
+
                 if (attackTimer <= 0f)
                 {
-                    var dmg = GetComponent<EnemyStats>().Damage.Value;
-
+                    // aplica dano
+                    float dmg = GetComponent<EnemyStats>().Damage.Value;
                     if (target.CompareTag("Player"))
                     {
                         var ps = target.GetComponent<PlayerStats>();
@@ -92,11 +80,9 @@ public class Enemy : MonoBehaviour
                     }
                     else
                     {
-                        var build = target.GetComponent<Build>();
-                        if (build != null)
-                            build.TakeDamage(dmg);
+                        var b = target.GetComponent<Build>();
+                        if (b != null) b.TakeDamage(dmg);
                     }
-
                     attackTimer = attackInterval;
                 }
             }
@@ -104,12 +90,46 @@ public class Enemy : MonoBehaviour
             {
                 agent.isStopped = false;
                 agent.SetDestination(target.position);
+                PlayWalkAnimation(agent.velocity);
             }
         }
         else
         {
             agent.isStopped = false;
             agent.SetDestination(powerCore.position);
+            PlayWalkAnimation(agent.velocity);
+        }
+    }
+
+    // toque o clipe de andar conforme a direção da velocidade
+    void PlayWalkAnimation(Vector2 vel)
+    {
+        if (vel.sqrMagnitude < 0.01f) return;
+
+        if (Mathf.Abs(vel.x) > Mathf.Abs(vel.y))
+        {
+            if (vel.x > 0) animator.Play("WalkRight");
+            else           animator.Play("WalkLeft");
+        }
+        else
+        {
+            if (vel.y > 0) animator.Play("WalkUp");
+            else           animator.Play("WalkDown");
+        }
+    }
+
+    // toque o clipe de ataque conforme a direção para o alvo
+    void PlayAttackAnimation(Vector2 dir)
+    {
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if (dir.x > 0) animator.Play("AttackRight");
+            else           animator.Play("AttackLeft");
+        }
+        else
+        {
+            if (dir.y > 0) animator.Play("AttackUp");
+            else           animator.Play("AttackDown");
         }
     }
 
