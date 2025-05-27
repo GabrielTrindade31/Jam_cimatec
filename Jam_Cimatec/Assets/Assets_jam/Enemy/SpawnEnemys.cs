@@ -29,7 +29,7 @@ public class SpawnEnemys : MonoBehaviour
     public float timeBetweenWaves = 5f;
     public bool  startWave        = false;
 
-    private int  currentWave = 1;
+    public int  currentWave = 1;
     private int  enemiesToSpawn;
     private int  enemiesAlive;
     private bool isSpawning;
