@@ -105,11 +105,17 @@ public class SpawnEnemys : MonoBehaviour
     public void ResetToStart()
     {
         StopAllCoroutines();
-        currentWave   = 1;
-        enemiesAlive  = 0;
-        enemiesToSpawn= 0;
-        isSpawning    = false;
-        startWave     = false;
+        currentWave = 1;
+        enemiesAlive = 0;
+        enemiesToSpawn = 0;
+        isSpawning = false;
+        startWave = false;
+    }
+     public void OnWaveButtonPressed()
+    {
+        // dispara a próxima wave
+        if (SpawnEnemys.Instance != null)
+            SpawnEnemys.Instance.startWave = true;
     }
 
     [Header("Spawn Points")]
